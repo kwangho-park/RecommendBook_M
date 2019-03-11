@@ -1,0 +1,32 @@
+
+
+
+  
+/* tag 단위 css */
+
+article{
+    font-size : 1.5em;
+}
+    
+
+
+/* 속성 단위 css */
+
+#bookName{
+    color : DarkBlue;
+    font-size : 2em;
+    text-align : center;
+}
+
+#writer{
+    text-align : right;
+}
+
+.score{
+    color : DarkGreen;
+}
+
+#reference{
+    color : red;
+}
+

@@ -1,0 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+
+
+<span class="menuPanel" id="mouseOver"><a href="/RecommendBook_M/content/index/index.jsp" target="_self">					홈 페이지</a></span>
+<span class="menuPanel" id="mouseOver"><a href="/RecommendBook_M/content/signUp/signUp.jsp" target="_self">						회원가입</a></span>
+<span class="menuPanel" id="mouseOver"><a href="/RecommendBook_M/content/login/login.jsp" target="_self">					로그인</a></span>
+<span class="menuPanel" id="mouseOver"><a href="/RecommendBook_M/content/recommendBook/recommendBook.jsp" target="_self">	추천도서 검색</a></span>
+<span class="menuPanel" id="mouseOver"><a href="/RecommendBook_M/content/post/post.jsp" target="_self">						게시글 작성</a></span>
