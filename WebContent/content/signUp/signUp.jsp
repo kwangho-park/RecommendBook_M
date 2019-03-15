@@ -50,7 +50,7 @@
 
     <!-- 회원가입 양식 -->
     <article>
-	  <form name = "signUpClient" method = "post" action="signUpFilter.jsp" onsubmit= "return signUpValidation()">
+	  <form name = "signUpClient" method = "post" action="signUpFilter.do" onsubmit= "return signUpValidation()">
 
         <label class="signUpInfo"> 아 이 디&nbsp; : &nbsp;</label>					<input type = "text" 	name="signUpId"		id="id" 		placeholder="아이디를 입력해줘야겠쥬?">
         <%--[장기적 고민]
@@ -63,7 +63,7 @@
         <label class="signUpInfo"> 이 메 일&nbsp; : &nbsp;</label>					<input type = "email" 	name="signUpEmail"		id="email" 		placeholder="이메일은 @을 넣어야겠쥬?">
         <label class="signUpInfo"> 주&nbsp; &nbsp; &nbsp;소&nbsp; : &nbsp;</label>	<input type = "text" 	name="signUpAddress"	id="address" 	placeholder="솔로인 여성분은 연락처 기입">
 
-
+<!-- 
         <label class="signUpInfo"> 가입경로&nbsp; : &nbsp;</label> 
         <select name = "signUpProcess" size = "1"> 
           <option value = "searchInternet"> 인터넷 검색 </option>
@@ -72,16 +72,25 @@
           <option value = "other"> 기타 </option>
         </select>
 
+ -->
 
+		<!-- value값 한글여부 테스트 중 -->
+		
+        <label class="signUpInfo"> 가입경로&nbsp; : &nbsp;</label> 
+        <select name = "signUpProcess" size = "1"> 
+          <option value = "인터넷 검색"> 인터넷 검색 </option>
+          <option value = "지인추천"> 지인추천 </option>
+          <option value = "광고"> 광고 </option>
+          <option value = "기타"> 기타 </option>
+        </select>
 
 
 		<div class="mail">
 		
         <fieldset>
           <legend> 광고성 메일 수신여부 </legend>
-     
-          <label> 수신 : </label>	<input type = "radio" name = "advertising" checked> 
-          <label> 미수신 : </label>	<input type = "radio" name = "advertising">
+          <label> 수신 : </label>	<input type = "radio" name = "signUpAdvertising" value="수신" checked> 
+          <label> 미수신 : </label>	<input type = "radio" name = "signUpAdvertising" value="미수신">
         </fieldset>
 
         <br>

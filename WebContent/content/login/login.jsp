@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -21,6 +23,16 @@
 </head>
 
 
+<%-- 로그인 필터링 결과를 출력 --%>
+<c:choose>
+	<c:when test="${requestScope.loginFilterResult == true}">
+		<script>alert("로그인 성공! nice job!")</script>
+	</c:when>
+	<c:when test="${requestScope.loginFilterResult == false}">
+		<script>alert("아이디 또는 비밀번호가 일치하지 않습니다! please, one more!")</script>
+	</c:when>
+</c:choose>
+
 
 <body onload="initLogin()">
 
@@ -32,8 +44,8 @@
   </header>
 
   <nav>
-  		<!-- menu panel -->  
-		<%@ include file="/content/common/menuPanel.jspf"%>
+  	<!-- menu panel -->  
+	<%@ include file="/content/common/menuPanel.jspf"%>
   </nav>
 
   </div>
@@ -48,9 +60,7 @@
 
 
 	<article>
-		
- 		<form name = "loginClient" method = "post" action="loginFilter.jsp" onsubmit= "return login()">
- 
+   		<form name = "loginClient" method = "post" action="loginFilter.do" onsubmit= "return login()">
     	<label class="loginInfo"> ID </label><input type = "text" 		name="loginId" id = "id" placeholder="문자입력">
     	<label class="loginInfo"> PW </label><input type = "password"	name="loginPw" id = "pw" placeholder="숫자입력">
     	
