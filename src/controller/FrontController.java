@@ -1,0 +1,119 @@
+
+package controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import command.Command;
+import command.LoginFilterCommand;
+
+// 보안상의 이유로 확장자 do
+
+@WebServlet("*.do")
+public class FrontController extends HttpServlet{
+	
+	
+	public FrontController() {
+		super();
+	}
+	
+	public void init(ServletConfig config) throws ServletException{
+		System.out.println("execute init");
+	}
+	
+	
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		System.out.println("execute doGet");
+		actionDo(request, response);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		System.out.println("execute doPost");
+		actionDo(request, response);
+
+	}
+	
+	
+	
+	// view, model로 가기위한 통로의 역활 //
+	private void actionDo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+
+		System.out.println("execute actionDo");
+		
+		request.setCharacterEncoding("UTF-8");
+		
+		
+		String viewPage = null;
+		Command command = null;
+		
+		
+		// 분배를위한 파일경로 찾기 //
+		// [추후] 개선이 필요한 부분
+		String uri = request.getRequestURI();				// context path + 요청 파일경로 반환 
+		String conPath = request.getContextPath();			// context path 반환	
+		String com = uri.substring(conPath.length());		// 요청 파일 path 반환
+
+
+		// 사용자가 입력한 URL의 경로를 분배하고 실행하는 로직 // 	
+		// [menu] index page 요청
+		if(com.equals("/content/index/index.do")) {						
+			viewPage = "/content/index/index.jsp";
+			
+			
+		// [menu] login page 요청
+		}else if(com.equals("/content/login/login.do")){				
+			viewPage = "/content/login/login.jsp";
+			
+			
+		// login 실행
+		}else if(com.equals("/content/login/loginFilter.do")) {										
+			
+			// db table에서 id와 pw를 비교
+			command = new LoginFilterCommand();
+			command.execute(request, response);
+
+			// [추후] db 에서 데이터를 비교한 결과에 따라 if문으로 분배
+			viewPage = "/content/login/login.jsp";
+	
+			
+		// [menu] signUp page 요청	
+		}else if(com.equals("/content/signUp/signUp.do")) {
+			viewPage = "/content/signUp/signUp.jsp";
+
+		
+		// signUp 실행 
+		}else if(com.equals("/content/signUp/signUpFilter.do")) {
+			
+			// db table에서 id 중복여부를 비교
+			
+			
+			viewPage = "/content/signUp/signUp.jsp";			
+		}
+			
+		
+		
+		
+		
+		
+		// forwarding // 
+		// 분배된 결과 페이지를 출력하기위한 forwarding (view 단에서 <jsp:forward /> 와 동일한 역활
+		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
+		dispatcher.forward(request, response);		
+	}
+	
+
+	public void destroy() {
+		System.out.println("execute destroy");
+	}
+	
+}  // Controller END
