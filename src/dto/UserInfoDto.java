@@ -17,6 +17,14 @@ public class UserInfoDto {
 	
 	public UserInfoDto(String id, int pw, String userName, String birthday, String email, String address, String signUpProcess, String advertising) {
 		
+		this.id = id;
+		this.pw = pw;
+		this.userName = userName;
+		this.birthday = birthday;
+		this.email = email;
+		this.address = address;
+		this.signUpProcess = signUpProcess;
+		this.advertising = advertising;
 	}
 
 	// getter, setter // 

@@ -2,7 +2,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -13,7 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.Command;
+import command.DeletePostCommand;
 import command.LoginFilterCommand;
+import command.SavePostCommand;
+import command.SelectPostCommand;
+import command.SignUpFilterCommand;
+import command.ViewPostCommand;
 
 // 보안상의 이유로 확장자 do
 
@@ -75,6 +79,27 @@ public class FrontController extends HttpServlet{
 			viewPage = "/content/login/login.jsp";
 			
 			
+		// [menu] signUp page 요청	
+		}else if(com.equals("/content/signUp/signUp.do")) {
+			viewPage = "/content/signUp/signUp.jsp";
+
+			
+		// [menu] post page 요청
+		}else if(com.equals("/content/post/post.do")) {
+			viewPage = "/content/post/post.jsp";
+
+		// [menu] recommendBook page 요청
+			//////// 왜 여기 조건이 만족하지??
+			// 왜 저런 URI가 나왔지??
+		}else if(com.equals("/content/recommendBook/recommendBook.do")){
+			
+			// print ALL post
+			command = new SelectPostCommand();
+			command.execute(request, response);
+			
+			viewPage = "/content/recommendBook/recommendBook.jsp";
+			
+	
 		// login 실행
 		}else if(com.equals("/content/login/loginFilter.do")) {										
 			
@@ -85,24 +110,58 @@ public class FrontController extends HttpServlet{
 			// [추후] db 에서 데이터를 비교한 결과에 따라 if문으로 분배
 			viewPage = "/content/login/login.jsp";
 	
-			
-		// [menu] signUp page 요청	
-		}else if(com.equals("/content/signUp/signUp.do")) {
-			viewPage = "/content/signUp/signUp.jsp";
-
-		
+					
 		// signUp 실행 
 		}else if(com.equals("/content/signUp/signUpFilter.do")) {
 			
-			// db table에서 id 중복여부를 비교
-			
+			command = new SignUpFilterCommand();
+			command.execute(request, response);
 			
 			viewPage = "/content/signUp/signUp.jsp";			
-		}
+		
+			
+		// save post + print All post
+		}else if(com.equals("/content/post/savePost.do")) {
+
+			command = new SavePostCommand();
+			command.execute(request, response);
+			
+			// print ALL post
+			command = new SelectPostCommand();
+			command.execute(request, response);
+			
+			
+			viewPage = "/content/recommendBook/recommendBook.do";
+		
+		// 특정(=num) post 조회
+		}else if(com.equals("/content/post/viewPost.do")) {
+			
+			command = new ViewPostCommand();
+			command.execute(request, response);
+			
+			viewPage = "/content/post/viewPost.jsp";
+			
+			
+		// post 수정	
+		}else if(com.equals("/content/post/modifyPost.do")){
 			
 		
+			////// 특정 post를 수정하는 command
 		
+			viewPage = "/content/recommendBook/recommendBook.do";
+			
+			
+		// 특정(=num) post 삭제	
+		////// debug
+		}else if(com.equals("/content/post/deletePost.do")) {
 		
+			// 특정 post 삭제하는 command
+			command = new DeletePostCommand();
+			command.execute(request, response);
+	
+			viewPage = "/content/recommendBook/recommendBook.do";
+		}
+			
 		
 		
 		// forwarding // 

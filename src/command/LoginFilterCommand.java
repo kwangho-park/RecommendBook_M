@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.Dao;
+import dao.UserInfoDao;
 import dto.UserInfoDto;
 import service.LoginFilter;
 
@@ -21,7 +21,7 @@ public class LoginFilterCommand implements Command{
 
 		
 		// service 객체, DAO 객체 //
-		Dao dao = new Dao();
+		UserInfoDao dao = new UserInfoDao();
 		LoginFilter loginFilter =  new LoginFilter();
 		
 		
@@ -31,7 +31,7 @@ public class LoginFilterCommand implements Command{
 	
 		
 		// DAO 에서 id, pw 조회하는 로직 실행
-		dto = dao.SelectLoginUserInfo();
+		dto = dao.select();
 		
 		
 		// service 에서 id, pw 비교하는 로직 setting 및 execute	
@@ -41,6 +41,7 @@ public class LoginFilterCommand implements Command{
 		
 		result = loginFilter.filter();		// true or false
 		
+		// browser 경고창 출력을 위한 setting
 		request.setAttribute("loginFilterResult", result);
 
 		

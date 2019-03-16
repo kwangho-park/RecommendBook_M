@@ -1,6 +1,6 @@
 package test;
 
-import dao.Dao;
+import dao.UserInfoDao;
 import dto.UserInfoDto;
 
 public class TestMain {
