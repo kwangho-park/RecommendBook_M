@@ -36,7 +36,7 @@
      <caption>추천 순위표</caption>
      
      <thead>
-     <tr><th>순위</th><th>도 서 명</th> <th>작 가 명</th> <th>추천 점수</th></tr> 
+     <tr><th>순위</th><th>도 서 명</th> <th>작 가 명</th> <th>추천 점수(평균)</th></tr> 
      </thead>
 
      <tbody>

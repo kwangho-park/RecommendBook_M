@@ -1,10 +1,11 @@
-<!-- page directive -->
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 
 <!DOCTYPE html>
+
+
 <html>
 <head>
-	<title>post</title>
+	<title>post view</title>
 
 	<meta charset="UTF-8">
 	<meta name="description" content = "사용자의 취향을 고려한 도서 추천 웹 사이트">
@@ -15,6 +16,8 @@
 
     <!-- 해당 page단위 CSS -->
     <link href="postStyle.css" type="text/css" rel="stylesheet">
+
+
 
 </head>
 
@@ -42,17 +45,22 @@
     
     <section>  
 
-	<h2>게시글 작성</h2>
+	<h2>게시글 수정</h2>
+		<!-- request 영역에 저장되어있는 postInfo dto 객체 꺼내기 -->
+		<form name="postClient"  action="modifyPost.do" method="post" onsubmit="return postValidation()">
 	
-		<form name="postClient"  action="savePost.do" method="post" onsubmit="return postValidation()">
+	
+		<!-- [추후] 변경예정 -->
+		<!-- [hidden] 게시글 수정을 위한 DB table의 num값을 보관 -->
+		<input type="hidden" name="num" value="${requestScope.dto.num}">
 	
 	
-		<div class="postInfo"><label>도서명 : </label><input type="text" name="bookName"></div><br>
-		<div class="postInfo"><label>작가명 : </label><input type="text" name="writer"></div><br>
+		<div class="postInfo"><label>도서명 : </label><input type="text" name="bookName" value="${requestScope.dto.bookName }"></div><br>
+		<div class="postInfo"><label>작가명 : </label><input type="text" name="writer"   value="${requestScope.dto.writer }"></div><br>
 	
-		<div class="postInfo"><input type="text" name="title" placeholder="제목을 작성해주세요" style="width:600px"></div><br>
+		<div class="postInfo"><input type="text" name="title" style="width:600px" value="${requestScope.dto.title }"></div><br>
 	
-		<div class="postInfo"><textarea name="content" cols="100" rows="10" placeholder="이곳에 게시글을 작성해주세요 ~ "></textarea></div>
+		<div class="postInfo"><textarea name="content" cols="100" rows="10">${requestScope.dto.content }</textarea></div>
 		
 		<hr>
 
@@ -61,7 +69,7 @@
 		<div class="postInfo"> 
 		 	<label> 1. 분류 : </label> 
 		    <select name = "bookType" id="bookType" size = "1" > 
-   				<option value = "">=====선택=====</option>
+ 				<option value = "">=====선택=====</option>
 		      	<option value = "소설"> 소설 </option>		
 		 		<option value = "에세이/시"> 에세이/시 </option>
 	    		<option value = "인문학"> 인문학 </option>
@@ -76,10 +84,11 @@
 	    	</select>
 		</div><br>
 	  
+	  
 		<div class="postInfo"> 
 		  	<label> 2. 취향 : </label> 
 		    <select name = "favorite" size = "1"> 
-				<option value = "">=====선택=====</option>
+		    	<option value = "">=====선택=====</option>
 	      		<option value = "달달한 로맨스"> 달달한 로맨스 </option>
 	   	   		<option value = "재미있는 유머"> 재미있는 유머 </option>
 	      		<option value = "탄탄한 스토리"> 탄탄한 스토리 </option>
@@ -91,7 +100,7 @@
 		<div class="postInfo"> 
 	  		<label> 3. 난이도 : </label> 
 	    	<select name = "bookLevel" size = "1">
- 				<option value = "">=====선택=====</option>
+	    		<option value = "">=====선택=====</option>
 	     	 	<option value = "상"> 상 </option> 
 	      		<option value = "중"> 중 </option>
 	      		<option value = "하"> 하 </option>
@@ -104,14 +113,22 @@
 	
 		<div class="postInfo"><input type="number" name="score" min="1" max="10" value="1"></div><br>
 		
-		<!-- 게시글 전송 버튼 -->
-		<div align="center"><input type="submit" name="postBtn" value="게시글 등록"></div><br>
+		<div align="center"><input type="submit" name="postBtn" value="게시글 수정"></div><br>
+	
 	
 	</form>
 	
   </section>
  
  
+ 	<!-- JQuery  -->
+ 	<!-- [추후] 서버에서 가져온값을 select box 에 셋팅! -->
+   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script>
+//	$('#bookType').val();
+	 
+	</script>
+ 	
  
   <!-- web page loading 시 초기화 로직 -->
   <script src="initPost.js"></script>

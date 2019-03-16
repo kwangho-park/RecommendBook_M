@@ -1,5 +1,6 @@
 <!-- page directive -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -16,10 +17,21 @@
   <link href="/RecommendBook_M/content/common/webSiteStyle.css" type="text/css" rel="stylesheet">
 
   <!-- 해당 page단위 CSS -->
-  <link href="recommendBookStyle.css" type="text/css" rel="stylesheet">
-  
+  <link href="/RecommendBook_M/content/recommendBook/recommendBookStyle.css" type="text/css" rel="stylesheet">
+ 
 
 </head>
+
+
+<%-- 특정 게시글의 저장 결과를 출력 --%>
+<c:if test="${requestScope.saveSuccess == true }">
+	<script>alert("게시글이 등록되었습니다! have nice day!!")</script>
+</c:if>
+
+<%-- 특정 게시글의 삭제 결과를 출력--%>
+<c:if test="${requestScope.deleteSuccess == true }">
+	<script>alert("게시글이 삭제되었습니다! have nice day!!")</script>
+</c:if>
 
 
 <body onload="initSearchBook()">
@@ -37,44 +49,55 @@
 	<%@ include file="/content/common/menuPanel.jspf"%>
   </nav>
 
-  </div>
+  </div>  	
 
 
-  
 
   <section>
   
     <!-- 도서취향 검색 및 추천 순위표-->
     <article>
-      <iframe src="searchBook/searchBook.jsp" width = "35%" height = "400px"></iframe>
-      <iframe src="rankingTable/rankingTable.jsp" width = "60%" height = "400px"></iframe>
+      <iframe src="/RecommendBook_M/content/recommendBook/searchBook/searchBook.jsp" width = "35%" height = "400px"></iframe>
+      <iframe src="/RecommendBook_M/content/recommendBook/rankingTable/rankingTable.jsp" width = "60%" height = "400px"></iframe>
 	</article>
 
 	<article>
 
 	<br>
-
+	<h2>게시글 목록</h2>
 	<table>
 		<thead>
-			<tr><th>순위</th><th>도 서 명</th><th>작 가 명</th><th>추천 점수</th><th>제 목</th></tr>
+			<tr>
+				<th>게시글 번호</th>
+				<th>도 서 명</th>
+				<th>작 가 명</th>
+				<th>제 목</th>
+				<th>분 류</th>
+				<th>취 향</th>
+				<th>난 이 도</th>
+				<th>추천 점수</th>
+			</tr>
 		</thead>
-			
+				
 		<tbody>
-			<tr><td>6</td><td id="bookName6"></td><td id="writer6"></td><td id="score6"></td><td id="title6"></td></tr>
-			<tr><td>7</td><td id="bookName7"></td><td id="writer7"></td><td id="score7"></td><td id="title7"></td></tr>
-			<tr><td>8</td><td id="bookName8"></td><td id="writer8"></td><td id="score8"></td><td id="title8"></td></tr>
-			<tr><td>9</td><td id="bookName9"></td><td id="writer9"></td><td id="score9"></td><td id="title9"></td></tr>
-			<tr><td>10</td><td id="bookName10"></td><td  id="writer10"></td><td id="score10"></td ><td id="title10"></td></tr>
+			<c:forEach items="${requestScope.listDto}" var="dto">
+				<tr>
+					<td>${dto.num}</td>
+					<td><a href="/RecommendBook_M/content/post/viewPost.do?num=${dto.num}">${dto.bookName}</a></td>
+					<td>${dto.writer}</td>
+					<td>${dto.title}</td>		
+					<td>${dto.bookType}</td>
+					<td>${dto.favorite}</td>
+					<td>${dto.bookLevel}</td>
+					<td>${dto.score}</td>
+					<td><a href="/RecommendBook_M/content/post/deletePost.do?num=${dto.num}">삭제</a></td>
+				</tr>				
+			</c:forEach>
 		</tbody>
 		
-	</table>
-	
-	
+	</table>	
 	<br>
-	
 	</article>
-
-
   </section>
   
   

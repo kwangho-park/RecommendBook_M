@@ -1,6 +1,7 @@
 <%-- 회원가입 정보 view --%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -23,6 +24,18 @@
    
 
 </head>
+
+
+<%-- 회원가입 필터링 결과를 경고창으로 출력 --%>
+<c:choose>
+	<c:when test="${requestScope.signUpFilterResult == true}">
+		<script>alert("회원가입 성공! good job!")</script>
+	</c:when>
+	<c:when test="${requestScope.signUpFilterResult == false}">
+		<script>alert("중복된 아이디가 존재합니다! please, one more!")</script>
+	</c:when>
+</c:choose>
+
 
 
 

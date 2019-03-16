@@ -23,7 +23,7 @@
 </head>
 
 
-<%-- 로그인 필터링 결과를 출력 --%>
+<%-- 로그인 필터링 결과를 경고창으로 출력 --%>
 <c:choose>
 	<c:when test="${requestScope.loginFilterResult == true}">
 		<script>alert("로그인 성공! nice job!")</script>
