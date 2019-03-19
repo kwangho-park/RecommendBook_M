@@ -46,7 +46,7 @@
     <section>  
 
 	<h2>게시글 수정</h2>
-		<!-- request 영역에 저장되어있는 postInfo dto 객체 꺼내기 -->
+
 		<form name="postClient"  action="modifyPost.do" method="post" onsubmit="return postValidation()">
 	
 	
@@ -55,12 +55,12 @@
 		<input type="hidden" name="num" value="${requestScope.dto.num}">
 	
 	
-		<div class="postInfo"><label>도서명 : </label><input type="text" name="bookName" value="${requestScope.dto.bookName }"></div><br>
-		<div class="postInfo"><label>작가명 : </label><input type="text" name="writer"   value="${requestScope.dto.writer }"></div><br>
+		<div class="postInfo"><label>도서명 : </label><input type="text" name="bookName" id="bookName" value="${requestScope.dto.bookName }"></div><br>
+		<div class="postInfo"><label>작가명 : </label><input type="text" name="writer"   id="writer" value="${requestScope.dto.writer }"></div><br>
 	
-		<div class="postInfo"><input type="text" name="title" style="width:600px" value="${requestScope.dto.title }"></div><br>
+		<div class="postInfo"><input type="text" name="title" id="title" style="width:600px" value="${requestScope.dto.title }"></div><br>
 	
-		<div class="postInfo"><textarea name="content" cols="100" rows="10">${requestScope.dto.content }</textarea></div>
+		<div class="postInfo"><textarea name="content" id="content" cols="100" rows="10">${requestScope.dto.content }</textarea></div>
 		
 		<hr>
 
@@ -111,7 +111,7 @@
 	
 		<h3>추천 점수를 입력해주세요^-^</h3>
 	
-		<div class="postInfo"><input type="number" name="score" min="1" max="10" value="1"></div><br>
+		<div class="postInfo"><input type="number" name="score" id="score" min="1" max="10" value="1"></div><br>
 		
 		<div align="center"><input type="submit" name="postBtn" value="게시글 수정"></div><br>
 	

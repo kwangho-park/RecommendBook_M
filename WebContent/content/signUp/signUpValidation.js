@@ -36,7 +36,7 @@ function signUpValidation() {
 	/* 객체 생성 및 참조값 할당 */
 	// 사용자에게 입력받은 data를 filter method에게 전달 (은닉된 creaeFilter 변수를 setting)
 	var login = createValidation(idDom.value, pwDom.value, nameDom.value, brathdayDom.value);
-
+	/////// debug
 
 	/* 회원가입정보의 유효성을 검사하는 함수 호출(=즉, 실행) */ 
 	return login.validation();

@@ -65,32 +65,21 @@
     <article>
 	  <form name = "signUpClient" method = "post" action="signUpFilter.do" onsubmit= "return signUpValidation()">
 
-        <label class="signUpInfo"> 아 이 디&nbsp; : &nbsp;</label>					<input type = "text" 	name="signUpId"		id="id" 		placeholder="아이디를 입력해줘야겠쥬?">
+        <label class="signUpInfo"> 아 이 디&nbsp; : &nbsp;</label>					<input type = "text" 	name="signUpId"			id="id" placeholder="문자로 입력해주세요">
         <%--[장기적 고민]
         <input type="button" id="idCheckBtn" value="중복확인">  
         --%>
 
-        <label class="signUpInfo"> 비밀번호 : &nbsp;</label>							<input type = "password" name="signUpPw"		id="pw" 		placeholder="잊어버리면 찾을 수가 없슈!">
-        <label class="signUpInfo"> 이&nbsp; &nbsp; 름&nbsp; : &nbsp;</label>			<input type = "text" 	name="signUpName"		id="name" 		placeholder="이름이 뭐쥬?">
-        <label class="signUpInfo"> 생년월일 : &nbsp;</label>							<input type = "date"  	name="signUpBrathday"	id="brathday" 	placeholder="챙겨주지 않을꺼 알쥬?">
-        <label class="signUpInfo"> 이 메 일&nbsp; : &nbsp;</label>					<input type = "email" 	name="signUpEmail"		id="email" 		placeholder="이메일은 @을 넣어야겠쥬?">
-        <label class="signUpInfo"> 주&nbsp; &nbsp; &nbsp;소&nbsp; : &nbsp;</label>	<input type = "text" 	name="signUpAddress"	id="address" 	placeholder="솔로인 여성분은 연락처 기입">
+        <label class="signUpInfo"> 비밀번호 : &nbsp;</label>							<input type = "password"name="signUpPw"			id="pw"  placeholder="숫자로 입력해주세요">
+        <label class="signUpInfo"> 이&nbsp; &nbsp; 름&nbsp; : &nbsp;</label>			<input type = "text" 	name="signUpName"		id="name"	placeholder="당신의 이름은 무엇인가요?">
+        <label class="signUpInfo"> 생년월일 : &nbsp;</label>							<input type = "date"  	name="signUpBrathday" 	id="brathday" >
+        <label class="signUpInfo"> 이 메 일&nbsp; : &nbsp;</label>					<input type = "email" 	name="signUpEmail"		id="email" placeholder="이메일 형식에 맞춰주세요">
+        <label class="signUpInfo"> 주&nbsp; &nbsp; &nbsp;소&nbsp; : &nbsp;</label>	<input type = "text" 	name="signUpAddress"	id="address" placeholder="거주지가 어디신가요?">
 
-<!-- 
-        <label class="signUpInfo"> 가입경로&nbsp; : &nbsp;</label> 
-        <select name = "signUpProcess" size = "1"> 
-          <option value = "searchInternet"> 인터넷 검색 </option>
-          <option value = "recommended"> 지인추천 </option>
-          <option value = "advertising"> 광고 </option>
-          <option value = "other"> 기타 </option>
-        </select>
-
- -->
-
-		<!-- value값 한글여부 테스트 중 -->
 		
         <label class="signUpInfo"> 가입경로&nbsp; : &nbsp;</label> 
         <select name = "signUpProcess" size = "1"> 
+  		  <option value = "">=====선택=====</option>
           <option value = "인터넷 검색"> 인터넷 검색 </option>
           <option value = "지인추천"> 지인추천 </option>
           <option value = "광고"> 광고 </option>

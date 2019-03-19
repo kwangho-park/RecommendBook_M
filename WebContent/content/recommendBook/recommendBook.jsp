@@ -22,6 +22,15 @@
 
 </head>
 
+<%-- 로그인 필터링 결과를 경고창으로 출력 --%>
+<c:choose>
+	<c:when test="${requestScope.loginFilterResult == true}">
+		<script>alert("로그인 성공! nice job!")</script>
+	</c:when>
+	<c:when test="${requestScope.loginFilterResult == false}">
+		<script>alert("아이디 또는 비밀번호가 일치하지 않습니다! please, one more!")</script>
+	</c:when>
+</c:choose>
 
 <%-- 특정 게시글의 저장 결과를 출력 --%>
 <c:if test="${requestScope.saveSuccess == true }">
@@ -32,6 +41,13 @@
 <c:if test="${requestScope.deleteSuccess == true }">
 	<script>alert("게시글이 삭제되었습니다! have nice day!!")</script>
 </c:if>
+
+<%-- 특정 게시글의 수정 결과를 출력--%>
+<c:if test="${requestScope.modifySuccess == true }">
+	<script>alert("게시글이 수정되었습니다! have nice day!!")</script>
+</c:if>
+
+
 
 
 <body onload="initSearchBook()">
@@ -76,6 +92,7 @@
 				<th>취 향</th>
 				<th>난 이 도</th>
 				<th>추천 점수</th>
+				<th>삭 제</th>
 			</tr>
 		</thead>
 				

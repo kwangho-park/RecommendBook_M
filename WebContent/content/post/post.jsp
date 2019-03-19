@@ -47,12 +47,12 @@
 		<form name="postClient"  action="savePost.do" method="post" onsubmit="return postValidation()">
 	
 	
-		<div class="postInfo"><label>도서명 : </label><input type="text" name="bookName"></div><br>
-		<div class="postInfo"><label>작가명 : </label><input type="text" name="writer"></div><br>
+		<div class="postInfo"><label>도서명 : </label><input type="text" name="bookName" id="bookName"></div><br>
+		<div class="postInfo"><label>작가명 : </label><input type="text" name="writer" id="writer"></div><br>
 	
-		<div class="postInfo"><input type="text" name="title" placeholder="제목을 작성해주세요" style="width:600px"></div><br>
+		<div class="postInfo"><input type="text" name="title" id="title" placeholder="제목을 작성해주세요" style="width:600px"></div><br>
 	
-		<div class="postInfo"><textarea name="content" cols="100" rows="10" placeholder="이곳에 게시글을 작성해주세요 ~ "></textarea></div>
+		<div class="postInfo"><textarea name="content" id="content" cols="100" rows="10" placeholder="이곳에 게시글을 작성해주세요 ~ "></textarea></div>
 		
 		<hr>
 
@@ -102,7 +102,7 @@
 	
 		<h3>추천 점수를 입력해주세요^-^</h3>
 	
-		<div class="postInfo"><input type="number" name="score" min="1" max="10" value="1"></div><br>
+		<div class="postInfo"><input type="number" name="score" id="score" min="1" max="10" value="1"></div><br>
 		
 		<!-- 게시글 전송 버튼 -->
 		<div align="center"><input type="submit" name="postBtn" value="게시글 등록"></div><br>
