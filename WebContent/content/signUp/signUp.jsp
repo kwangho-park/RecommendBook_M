@@ -15,7 +15,7 @@
   <meta name="keywords" content = "book">
 
   <!-- 전체 영역 단위 CSS-->
-  <link href="/RecommendBook_D/content/common/webSiteStyle.css" type="text/css" rel="stylesheet">
+  <link href="/RecommendBook_M/content/common/webSiteStyle.css" type="text/css" rel="stylesheet">
 
 
   <!-- 해당 page단위 CSS -->
