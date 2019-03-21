@@ -7,3 +7,5 @@
 <span class="menuPanel" id="mouseOver"><a href="/RecommendBook_M/content/login/login.do" target="_self">					로그인</a></span>
 <span class="menuPanel" id="mouseOver"><a href="/RecommendBook_M/content/recommendBook/recommendBook.do" target="_self">	추천도서 검색</a></span>
 <span class="menuPanel" id="mouseOver"><a href="/RecommendBook_M/content/post/post.do" target="_self">						게시글 작성</a></span>
+ 
+ 

@@ -2,7 +2,7 @@
  
 /*/ web site 전체 CSS 스타일 /*/
  
-/*/ tag 단위/ */
+/*/ tag 단위 = element 단위 / */
 
 h1{
 	color :  #0033cc; 	/* blue */
@@ -103,5 +103,10 @@ nav a{
 	*/  	
 	background-image: linear-gradient(142deg, #ccffdd, #80ffaa 31%, #33ff77 65%, #00e64d);
 	
-}  
+	
+	cursor:pointer;		/* cursor를 pointer (손가락)로 표출ㄴ */
+
+}
+
+
    
