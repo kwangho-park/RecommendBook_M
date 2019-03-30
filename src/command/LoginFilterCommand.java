@@ -1,7 +1,10 @@
 package command;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -26,7 +29,10 @@ public class LoginFilterCommand implements Command{
 		
 		
 		ArrayList<UserInfoDto> dto = null;
-		boolean result = false;
+
+		Cookie loginFlag = null;
+		String strFlag ="";
+		boolean flag = false;
 		
 	
 		
@@ -39,14 +45,25 @@ public class LoginFilterCommand implements Command{
 		loginFilter.setInputPw(loginPw);
 		loginFilter.setDto(dto);
 		
-		result = loginFilter.filter();		// true or false
+		flag = loginFilter.filter();		// true or false
 		
-		// browser 경고창 출력을 위한 setting
-		request.setAttribute("loginFilterResult", result);
+		request.setAttribute("loginFilterFlag", flag);	// JSP에서 사용하기위해 request영역에 추가
+		
+		
+		
+		
+		// 로그인 flag setting //
+		// [장기적 고민] try catch를 하지않으면 response setting 시 에러발생 = 이유는???
+		
+		strFlag = Boolean.toString(flag);
+		
+		try {
+			loginFlag = new Cookie("loginFlag", URLEncoder.encode(strFlag,"UTF-8"));
+			response.addCookie(loginFlag);				// web browser에 전송하기위해 response 영역에 추가
+			
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}		
 
-		
-		
 	} // execute() END
-
-
 } // LoginCommand END

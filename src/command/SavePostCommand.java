@@ -7,7 +7,7 @@ import dao.PostInfoDao;
 import dto.PostInfoDto;
 
 public class SavePostCommand implements Command{
-
+ 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		

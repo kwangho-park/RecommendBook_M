@@ -9,7 +9,7 @@ import dao.PostInfoDao;
 import dto.PostInfoDto;
 
 public class SelectPostCommand implements Command{
-
+  
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
