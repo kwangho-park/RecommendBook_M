@@ -1,5 +1,7 @@
 <!-- page directive -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.net.URLDecoder" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -24,10 +26,10 @@
 
 <%-- 로그인 필터링 결과를 경고창으로 출력 --%>
 <c:choose>
-	<c:when test="${requestScope.loginFilterResult == true}">
+	<c:when test="${requestScope.loginFilterFlag == true}">
 		<script>alert("로그인 성공! nice job!")</script>
 	</c:when>
-	<c:when test="${requestScope.loginFilterResult == false}">
+	<c:when test="${requestScope.loginFilterFlag == false}">
 		<script>alert("아이디 또는 비밀번호가 일치하지 않습니다! please, one more!")</script>
 	</c:when>
 </c:choose>
@@ -50,6 +52,31 @@
 
 
 
+
+<%--
+<%
+	// (test) servlet에서 저장한 cookie를 확인해보기위한 로직 
+	Cookie[] cookies = request.getCookies();
+
+	if(cookies != null){
+		 
+		for(int loop=0 ; loop<cookies.length ; loop++){
+			
+			if(cookies[loop].getName().equals("loginFlag")){
+				out.print(cookies[loop].getName());
+				out.print("=");
+				out.print(URLDecoder.decode(cookies[loop].getValue()));
+			}
+		}
+		
+	}else{ 
+		out.print("쿠키가 존재하지 않습니다");
+	}
+
+%>
+ --%>
+ 
+ 
 <body onload="initSearchBook()">
 
   <!-- main penel -->
@@ -102,7 +129,7 @@
 					<td>${dto.num}</td>
 					<td><a href="/RecommendBook_M/content/post/viewPost.do?num=${dto.num}">${dto.bookName}</a></td>
 					<td>${dto.writer}</td>
-					<td>${dto.title}</td>		
+					<td>${dto.title}</td>
 					<td>${dto.bookType}</td>
 					<td>${dto.favorite}</td>
 					<td>${dto.bookLevel}</td>
@@ -142,6 +169,54 @@
   <!-- 게시글을 업데이트하는 로직 -->
   <script src="printPost.js"></script>
 
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  
+  <script>
+  	// Cookie에 저장된 값을 조회
+  	var getCookie = function(name){
+        var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+        return value? value[2] : null;
+    };
+	
+    var setCookie = function(name, value, day) {
+        var date = new Date();
+        date.setTime(date.getTime() + day * 60 * 60 * 24 * 1000);
+        document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
+    };
+
+    var deleteCookie = function(name) {
+        var date = new Date();
+        document.cookie = name + "= " + "; expires=" + date.toUTCString() + "; path=/";
+    }
+
+
+    
+    /*
+    if(String.toBoolean(loginFlag)==true){
+    	
+    	// 
+    	alert(getCookie("loginFlag"));
+    	
+    	setCookie("loginFlag",getCookie("loginFlag"), 1);		// 1일동안 cookie data저장
+    }
+    */
+    
+    
+    
+    var loginFlag = getCookie("loginFlag");
+    
+ // [debug]로그인을 했는데 조건이 실행되지않는 이유는?
+// 추정 : data type의 불일치로 추정
+    if(loginFlag==true){
+    	
+    	// 
+    	alert(getCookie("loginFlag"));
+    	
+    	setCookie("loginFlag",getCookie("loginFlag"), 1);		// 1일동안 cookie data저장
+    }
+    alert(getCookie("loginFlag"));
+  </script>
   
 
 </body>
