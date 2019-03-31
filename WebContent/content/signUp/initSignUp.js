@@ -1,5 +1,5 @@
 
 function initSignUp() {
-	menuInit();
+//	menuInit();
 //	joinEventListener();
 }

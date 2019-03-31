@@ -50,32 +50,6 @@
 </c:if>
 
 
-
-
-
-<%--
-<%
-	// (test) servlet에서 저장한 cookie를 확인해보기위한 로직 
-	Cookie[] cookies = request.getCookies();
-
-	if(cookies != null){
-		 
-		for(int loop=0 ; loop<cookies.length ; loop++){
-			
-			if(cookies[loop].getName().equals("loginFlag")){
-				out.print(cookies[loop].getName());
-				out.print("=");
-				out.print(URLDecoder.decode(cookies[loop].getValue()));
-			}
-		}
-		
-	}else{ 
-		out.print("쿠키가 존재하지 않습니다");
-	}
-
-%>
- --%>
- 
  
 <body onload="initSearchBook()">
 
@@ -171,53 +145,8 @@
 
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  
-  <script>
-  	// Cookie에 저장된 값을 조회
-  	var getCookie = function(name){
-        var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
-        return value? value[2] : null;
-    };
-	
-    var setCookie = function(name, value, day) {
-        var date = new Date();
-        date.setTime(date.getTime() + day * 60 * 60 * 24 * 1000);
-        document.cookie = name + '=' + value + ';expires=' + date.toUTCString() + ';path=/';
-    };
 
-    var deleteCookie = function(name) {
-        var date = new Date();
-        document.cookie = name + "= " + "; expires=" + date.toUTCString() + "; path=/";
-    }
-
-
-    
-    /*
-    if(String.toBoolean(loginFlag)==true){
-    	
-    	// 
-    	alert(getCookie("loginFlag"));
-    	
-    	setCookie("loginFlag",getCookie("loginFlag"), 1);		// 1일동안 cookie data저장
-    }
-    */
-    
-    
-    
-    var loginFlag = getCookie("loginFlag");
-    
- // [debug]로그인을 했는데 조건이 실행되지않는 이유는?
-// 추정 : data type의 불일치로 추정
-    if(loginFlag==true){
-    	
-    	// 
-    	alert(getCookie("loginFlag"));
-    	
-    	setCookie("loginFlag",getCookie("loginFlag"), 1);		// 1일동안 cookie data저장
-    }
-    alert(getCookie("loginFlag"));
-  </script>
-  
+  <script src="/RecommendBook_M/content/common/setMenuPanel.js" ></script>
 
 </body>
 </html>

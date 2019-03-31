@@ -18,15 +18,18 @@ function login() {
 	/* login 유효성검사을 위한 instance 생성 및 초기화 */
 	var loginValidation = createValidation(idDom.value, pwDom.value);
 
-
 	// 로그인 정보 유효성 검사 //
 	if (loginValidation.validation()) {		
 
 		alert("[유효성 검사 통과]")
 		result = true;
+
+		setLoginFlag();
 	}
+
 	
 	return result;
+	
 } // login() END
 
 

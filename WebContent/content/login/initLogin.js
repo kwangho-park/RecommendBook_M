@@ -1,6 +1,7 @@
 
 
 function initLogin(){
-  menuInit();
+//  menuInit();
 //  loginEventListener();
+  
 }

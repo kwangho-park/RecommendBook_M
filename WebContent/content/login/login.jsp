@@ -55,12 +55,13 @@
   <section>
     
     <article>
-    <h2>로그인 페이지에 오신것을 환영합니다 ^-^ </h2>
+    <h2>로그인 페이지에 오신것을 환영합니다 </h2>
     </article>
 
 
 	<article>
    		<form name = "loginClient" method = "post" action="loginFilter.do" onsubmit= "return login()">
+   		
     	<label class="loginInfo"> ID </label><input type = "text" 		name="loginId" id = "id" placeholder="문자입력">
     	<label class="loginInfo"> PW </label><input type = "password"	name="loginPw" id = "pw" placeholder="숫자입력">
     	
@@ -95,12 +96,11 @@
   <!-- 로그인 유효성 검사 로직  --> 
   <script src="loginValidation.js"></script>
   
+  <!-- login flag setting -->
+  <script src="setLoginFlag.js"></script>
   
-  
-  <%-- 
-  <!-- 로그인 filtering 로직 [old] -->
-  <script src="loginFilter_old.js"></script>
-  --%>
+  <!-- setMenuPanel 미적용(임시) -->
+  <!-- [장기적 고민] 해당페이지(로그인)에서 cookie 의 값을 읽을경우 true가 반환됨 -->
 
 </body>
 

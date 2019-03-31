@@ -1,39 +1,40 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:useBean id="cal" class="old.etc.IndexCalendar" scope="page"/>
 
 <!DOCTYPE html>
-
 <html>
 
 <head>
 
   <title> Recommend book </title>
-
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset = "utf-8">
   <meta name="description" content = "사용자의 취향을 고려한 도서 추천 웹 사이트">
   <meta name="keywords" content = "book">
-
+  
   <!-- 전체 영역 단위 CSS -->
   <link href="/RecommendBook_M/content/common/webSiteStyle.css" type="text/css" rel="stylesheet">
 
   <!-- 해당 page단위 CSS -->
-  <link href="indexStyle.css" type="text/css" rel="stylesheet">
- 
+  <link href="logoutStyle.css" type="text/css" rel="stylesheet">
+  
+  
 </head>
 
 
 
-<body onload="init()">
+
+<body onload="initLogout()">
 
   <!-- main penel -->
   <div class="mainPanel">		
-  
+
   <header>  
   	<h1> Recommend book web site </h1>
   </header>
 
-  
   <nav>
   	<!-- menu panel -->  
 	<%@ include file="/content/common/menuPanel.jspf"%>
@@ -42,28 +43,19 @@
   </div>
 
 
+
   <section>
     
     <article>
-	<span>  
-		접속 일자는
-		${cal.year}년 ${cal.month}월 ${cal.date}일
-		${cal.hour}시 ${cal.minute }분
-		입니다.
-		
-
-	</span>
-
-    <!-- 인사말 및 회원가입 link -->
-    <p>안녕하세요. <strong>도서 추천 웹 사이트에 오신것을 환영합니다 ^-^</strong><br>
-      해당 웹 사이트를 이용하기 위해서 회원가입이 필요합니다. </p>
-   
+    <h2>로그아웃 페이지입니다 </h2>
     </article>
- 
- 
-    <!-- home page 메인 이미지 -->
-    <img class = "HomeImg" src="/RecommendBook_M/content/reference/img/book-sea(free_commercial).jpg" width= "1000px" height = "500px">
 
+
+	<article>
+
+		<button onclick="logoutBtn()" class="logoutBtn">로그아웃</button>
+
+	</article>
 
   </section>
 
@@ -77,18 +69,19 @@
   </aside>		
 
 
-   <!-- 저작권 정보, 연락처 등-->
+  <!-- 저작권 정보, 연락처 등-->
   <footer> 
     저작권 : recommend book web site는 <mark>박광호(웹 프로그래머)에게 저작권</mark>이 있습니다
   </footer>
 
-  
-  
-  <!-- web page loading 시 초기화 로직 -->
-  <script src="initIndex.js"></script>
-  
+
+  <!-- ----------------------------------------------------------------------------------------- -->
+
+
+  <script src="logoutBtn.js"></script>
+
   <script src="/RecommendBook_M/content/common/setMenuPanel.js" ></script>
-  
-  
+
 </body>
+
 </html>

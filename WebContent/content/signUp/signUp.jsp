@@ -63,47 +63,46 @@
 
     <!-- 회원가입 양식 -->
     <article>
-	  <form name = "signUpClient" method = "post" action="signUpFilter.do" onsubmit= "return signUpValidation()">
+			<form name="signUpClient" method="post" action="signUpFilter.do" onsubmit="return signUpValidation()">
 
-        <label class="signUpInfo"> 아 이 디&nbsp; : &nbsp;</label>					<input type = "text" 	name="signUpId"			id="id" placeholder="문자로 입력해주세요">
-        <%--[장기적 고민]
-        <input type="button" id="idCheckBtn" value="중복확인">  
-        --%>
+				<label class="signUpInfo"> 아 이 디&nbsp; : &nbsp;</label> <input type="text" name="signUpId" id="id" placeholder="문자로 입력해주세요">
+					
+				<%--[장기적 고민]
+        		<input type="button" id="idCheckBtn" value="중복확인">  
+        		--%>
 
-        <label class="signUpInfo"> 비밀번호 : &nbsp;</label>							<input type = "password"name="signUpPw"			id="pw"  placeholder="숫자로 입력해주세요">
-        <label class="signUpInfo"> 이&nbsp; &nbsp; 름&nbsp; : &nbsp;</label>			<input type = "text" 	name="signUpName"		id="name"	placeholder="당신의 이름은 무엇인가요?">
-        <label class="signUpInfo"> 생년월일 : &nbsp;</label>							<input type = "date"  	name="signUpBrathday" 	id="brathday" >
-        <label class="signUpInfo"> 이 메 일&nbsp; : &nbsp;</label>					<input type = "email" 	name="signUpEmail"		id="email" placeholder="이메일 형식에 맞춰주세요">
-        <label class="signUpInfo"> 주&nbsp; &nbsp; &nbsp;소&nbsp; : &nbsp;</label>	<input type = "text" 	name="signUpAddress"	id="address" placeholder="거주지가 어디신가요?">
+				<label class="signUpInfo"> 비밀번호 : &nbsp;</label> <input type="password" name="signUpPw" id="pw" placeholder="숫자로 입력해주세요">
+				<label class="signUpInfo"> 이&nbsp; &nbsp; 름&nbsp; : &nbsp;</label> <input type="text" name="signUpName" id="name" placeholder="당신의 이름은 무엇인가요?"> 
+				<label class="signUpInfo">생년월일 : &nbsp;</label> <input type="date" name="signUpBrathday"id="brathday"> 
+				<label class="signUpInfo"> 이 메일&nbsp; : &nbsp;</label> <input type="email" name="signUpEmail" id="email"placeholder="이메일 형식에 맞춰주세요"> 
+				<label class="signUpInfo">주&nbsp; &nbsp; &nbsp;소&nbsp; : &nbsp;</label><input type="text"name="signUpAddress" id="address" placeholder="거주지가 어디신가요?">
 
-		
-        <label class="signUpInfo"> 가입경로&nbsp; : &nbsp;</label> 
-        <select name = "signUpProcess" size = "1"> 
-  		  <option value = "">=====선택=====</option>
-          <option value = "인터넷 검색"> 인터넷 검색 </option>
-          <option value = "지인추천"> 지인추천 </option>
-          <option value = "광고"> 광고 </option>
-          <option value = "기타"> 기타 </option>
-        </select>
+				<label class="signUpInfo"> 가입경로&nbsp; : &nbsp;</label> <select
+					name="signUpProcess" size="1">
+					<option value="">=====선택=====</option>
+					<option value="인터넷 검색">인터넷 검색</option>
+					<option value="지인추천">지인추천</option>
+					<option value="광고">광고</option>
+					<option value="기타">기타</option>
+				</select>
 
 
-		<div class="mail">
-		
-        <fieldset>
-          <legend> 광고성 메일 수신여부 </legend>
-          <label> 수신 : </label>	<input type = "radio" name = "signUpAdvertising" value="수신" checked> 
-          <label> 미수신 : </label>	<input type = "radio" name = "signUpAdvertising" value="미수신">
-        </fieldset>
+				<div class="mail">
 
-        <br>
-         <input type="submit" value="회원가입신청">     
-        <br>
-        
-        </div>
-        
+					<fieldset>
+						<legend> 광고성 메일 수신여부 </legend>
+						<label> 수신 : </label> <input type="radio" name="signUpAdvertising"
+							value="수신" checked> <label> 미수신 : </label> <input
+							type="radio" name="signUpAdvertising" value="미수신">
+					</fieldset>
 
-      </form>
-    </article>
+					<br> <input type="submit" value="회원가입신청"> <br>
+
+				</div>
+
+
+			</form>
+		</article>
   </section>
 
   <hr>
@@ -132,11 +131,9 @@
   <!-- 입력한 회원가입 정보의 유효성 검사 -->
   <script src="signUpValidation.js"></script>
   
+  <script src="/RecommendBook_M/content/common/setMenuPanel.js" ></script>
+  
 <%--
-  <!-- session storage에 저장하는 로직 -->
-  <script src="saveInfo_old.js"></script>
-   
-
   <!-- id 중복여부를 확인하는 로직 -->
   <!-- [장기적 고민] 하나의 form에 2개의 submit처리방법은??--!>
   <script src="idFilter_old.js"></script>

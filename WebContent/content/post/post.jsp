@@ -120,6 +120,8 @@
   <!-- 게시글 정보 필터링-->
   <script src="postValidation.js"></script>
 
+  <script src="/RecommendBook_M/content/common/setMenuPanel.js" ></script>
+
 </body>
 
 </html>
