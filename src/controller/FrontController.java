@@ -14,21 +14,22 @@ import javax.servlet.http.HttpServletResponse;
 import command.Command;
 import command.DeletePostCommand;
 import command.LoginFilterCommand;
+import command.ModifyPostCommand;
 import command.SavePostCommand;
 import command.SelectPostCommand;
 import command.SignUpFilterCommand;
 import command.ViewPostCommand;
 
-// 보안상의 이유로 확장자 do
+// 서브렛 표기용 do
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet{
 	
-	
+	 
 	public FrontController() {
 		super();
 	}
-	
+
 	public void init(ServletConfig config) throws ServletException{
 		System.out.println("execute init");
 	}
@@ -77,7 +78,11 @@ public class FrontController extends HttpServlet{
 		// [menu] login page 요청
 		}else if(com.equals("/content/login/login.do")){				
 			viewPage = "/content/login/login.jsp";
-			
+
+		// [menu] logout page 요청
+		}else if(com.equals("/content/logout/logout.do")){				
+			viewPage = "/content/logout/logout.jsp";
+						
 			
 		// [menu] signUp page 요청	
 		}else if(com.equals("/content/signUp/signUp.do")) {
@@ -107,9 +112,13 @@ public class FrontController extends HttpServlet{
 			command = new LoginFilterCommand();
 			command.execute(request, response);
 
-			// [추후] db 에서 데이터를 비교한 결과에 따라 if문으로 분배
-			viewPage = "/content/login/login.jsp";
-	
+			// db 에서 데이터를 비교한 결과에 따라 if문으로 분배
+			if((boolean) request.getAttribute("loginFilterFlag")) {
+				viewPage = "/content/recommendBook/recommendBook.do";
+			}else {
+				viewPage = "/content/login/login.jsp";
+			}
+			
 					
 		// signUp 실행 
 		}else if(com.equals("/content/signUp/signUpFilter.do")) {
@@ -145,14 +154,13 @@ public class FrontController extends HttpServlet{
 		// post 수정	
 		}else if(com.equals("/content/post/modifyPost.do")){
 			
-		
-			////// 특정 post를 수정하는 command
-		
+			command = new ModifyPostCommand();
+			command.execute(request, response);
+			
 			viewPage = "/content/recommendBook/recommendBook.do";
 			
 			
 		// 특정(=num) post 삭제	
-		////// debug
 		}else if(com.equals("/content/post/deletePost.do")) {
 		
 			// 특정 post 삭제하는 command

@@ -54,7 +54,6 @@ public class LoginFilterCommand implements Command{
 		
 		// 로그인 flag setting //
 		// [장기적 고민] try catch를 하지않으면 response setting 시 에러발생 = 이유는???
-		
 		strFlag = Boolean.toString(flag);
 		
 		try {
