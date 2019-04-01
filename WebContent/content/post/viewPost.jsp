@@ -69,7 +69,7 @@
 		<div class="postInfo"> 
 		 	<label> 1. 분류 : </label> 
 		    <select name = "bookType" id="bookType" size = "1" > 
- 				<option value = "">=====선택=====</option>
+		        <option value = "${requestScope.dto.bookType}">${requestScope.dto.bookType}</option>
 		      	<option value = "소설"> 소설 </option>		
 		 		<option value = "에세이/시"> 에세이/시 </option>
 	    		<option value = "인문학"> 인문학 </option>
@@ -88,7 +88,7 @@
 		<div class="postInfo"> 
 		  	<label> 2. 취향 : </label> 
 		    <select name = "favorite" size = "1"> 
-		    	<option value = "">=====선택=====</option>
+		    	<option value = "${requestScope.dto.favorite }">${requestScope.dto.favorite }</option>
 	      		<option value = "달달한 로맨스"> 달달한 로맨스 </option>
 	   	   		<option value = "재미있는 유머"> 재미있는 유머 </option>
 	      		<option value = "탄탄한 스토리"> 탄탄한 스토리 </option>
@@ -100,7 +100,7 @@
 		<div class="postInfo"> 
 	  		<label> 3. 난이도 : </label> 
 	    	<select name = "bookLevel" size = "1">
-	    		<option value = "">=====선택=====</option>
+	    		<option value = "${requestScope.dto.bookLevel }">${requestScope.dto.bookLevel }</option>
 	     	 	<option value = "상"> 상 </option> 
 	      		<option value = "중"> 중 </option>
 	      		<option value = "하"> 하 </option>
@@ -111,7 +111,7 @@
 	
 		<h3>추천 점수를 입력해주세요^-^</h3>
 	
-		<div class="postInfo"><input type="number" name="score" id="score" min="1" max="10" value="1"></div><br>
+		<div class="postInfo"><input type="number" name="score" id="score" min="1" max="10" value="${requestScope.dto.score }"></div><br>
 		
 		<div align="center"><input type="submit" name="postBtn" value="게시글 수정"></div><br>
 	
@@ -120,14 +120,6 @@
 	
   </section>
  
- 
- 	<!-- JQuery  -->
- 	<!-- [추후] 서버에서 가져온값을 select box 에 셋팅! -->
-   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script>
-//	$('#bookType').val();
-	 
-	</script>
  	
  
   <!-- web page loading 시 초기화 로직 -->

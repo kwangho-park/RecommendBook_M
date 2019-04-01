@@ -146,6 +146,7 @@
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
+  <!-- menu panel을 동적으로 제어하는 logic -->
   <script src="/RecommendBook_M/content/common/setMenuPanel.js" ></script>
 
 </body>
