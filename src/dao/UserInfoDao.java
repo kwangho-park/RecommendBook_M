@@ -154,7 +154,7 @@ public class UserInfoDao {
 			pstmt.setString(5, userInfoDto.getEmail());
 			pstmt.setString(6, userInfoDto.getAddress());
 			pstmt.setString(7, userInfoDto.getSignUpProcess());
-			pstmt.setString(8, userInfoDto.getAddress());
+			pstmt.setString(8, userInfoDto.getAdvertising());
 			
 			pstmt.executeUpdate();
 			

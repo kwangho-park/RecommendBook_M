@@ -17,8 +17,7 @@ public class PostInfoDao {
 
 	
 	private DataSource dataSource;
-	private NumGroupDao numGroupDao;
-	
+
 	// server directory context.xml의 설정된 connection pool 생성
 	public PostInfoDao() {
 		try {
@@ -28,9 +27,7 @@ public class PostInfoDao {
 
 			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/mysql");
 			System.out.println("connection open");
-
-			numGroupDao = new NumGroupDao();			// DI객체 (Dependency Injection)
-			
+		
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -44,32 +41,29 @@ public class PostInfoDao {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		int num = 0;
-		
+	
 		try {
 			
-			// 게시글 번호를 조회하는 로직 추가 
-			num = numGroupDao.selectNumGroup("postInfo");
-			
+
 			conn = dataSource.getConnection();
 
-			String query = "INSERT INTO postInfo VALUES(?,?,?,?,?,?,?,?,?)";		// sql문 검증완료
+			String query = "INSERT INTO postInfo(bookName, writer, title, content, "
+					+ "bookType, favorite, bookLevel, score) VALUES(?,?,?,?,?,?,?,?)";		// sql문 검증완료
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, num);			
-			pstmt.setString(2, dto.getBookName());		
-			pstmt.setString(3, dto.getWriter());
-			pstmt.setString(4, dto.getTitle());
-			pstmt.setString(5, dto.getContent());
-			pstmt.setString(6, dto.getBookType());
-			pstmt.setString(7, dto.getFavorite());
-			pstmt.setString(8, dto.getBookLevel());
-			pstmt.setString(9, dto.getScore());
+
+			// 게시글 번호 num 은 AUTO_INCREMENT 적용
+			pstmt.setString(1, dto.getBookName());		
+			pstmt.setString(2, dto.getWriter());
+			pstmt.setString(3, dto.getTitle());
+			pstmt.setString(4, dto.getContent());
+			pstmt.setString(5, dto.getBookType());
+			pstmt.setString(6, dto.getFavorite());
+			pstmt.setString(7, dto.getBookLevel());
+			pstmt.setString(8, dto.getScore());
 
 		
 			pstmt.executeUpdate();		
-			
-			numGroupDao.updateNumGroup("postInfo");
-			
+
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -84,7 +78,7 @@ public class PostInfoDao {
 				e.printStackTrace();
 			}
 		}
-	} // inset() END
+	} // insertPost() END
 	
 	
 	// 게시글 리스트를 조회 //
@@ -225,14 +219,13 @@ public class PostInfoDao {
 				e.printStackTrace();
 			}
 		}
-		
-		
 	}// deletePost() END
 	
+
 	
 	
 	// 특정(num)게시글을 수정 //
-	public void updatePost(int num) {
+	public void updatePost(PostInfoDto dto) {
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -240,9 +233,61 @@ public class PostInfoDao {
 		try {
 			conn = dataSource.getConnection();
 			
-
+			String query = "UPDATE postInfo SET bookName=?, writer=?, title=?, "
+					+ "content=?, bookType=?, favorite=?, bookLevel=?, score=?"
+					+ "WHERE num = ?";
 			
-			/// 게시글을 수정하는 SQL 실행
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, dto.getBookName());
+			pstmt.setString(2, dto.getWriter());
+			pstmt.setString(3, dto.getTitle());
+			pstmt.setString(4, dto.getContent());
+			pstmt.setString(5, dto.getBookType());
+			pstmt.setString(6, dto.getFavorite());
+			pstmt.setString(7, dto.getBookLevel());
+			pstmt.setString(8, dto.getScore());
+			pstmt.setInt(9, dto.getNum());
+			
+			
+			pstmt.executeUpdate();
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+								
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	} // updatePost() END
+	
+	
+	// 전체 게시글의 수를 조회
+	public int selectTotalCount() {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int result = 0;
+		
+		try {
+			conn = dataSource.getConnection();
+
+			String query ="SELECT count(*) as totalCount FROM postInfo";
+			
+			pstmt = conn.prepareStatement(query);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt("totalCount");
+			}
 			
 			
 			
@@ -260,6 +305,8 @@ public class PostInfoDao {
 		}
 		
 		
-	} // updatePost() END
+		return result;
+		
+	}// selectTotalCount() END
 	
 } // PostInfoDao END
