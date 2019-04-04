@@ -59,7 +59,7 @@ public class PostInfoDao {
 			pstmt.setString(5, dto.getBookType());
 			pstmt.setString(6, dto.getFavorite());
 			pstmt.setString(7, dto.getBookLevel());
-			pstmt.setString(8, dto.getScore());
+			pstmt.setInt(8, dto.getScore());
 
 		
 			pstmt.executeUpdate();		
@@ -109,7 +109,7 @@ public class PostInfoDao {
 				String bookType = rs.getString("bookType");
 				String favorite = rs.getString("favorite");
 				String bookLevel= rs.getString("bookLevel");
-				String score 	= rs.getString("score");
+				int score 	= rs.getInt("score");
 				
 				PostInfoDto dto = new PostInfoDto(num, bookName, writer, title, content, bookType, favorite, bookLevel, score);
 				
@@ -164,7 +164,7 @@ public class PostInfoDao {
 				String bookType = rs.getString("bookType");
 				String favorite = rs.getString("favorite");
 				String bookLevel = rs.getString("bookLevel");
-				String score = rs.getString("score");
+				int score = rs.getInt("score");
 				
 				postInfoDto = new PostInfoDto(num, bookName, writer, title, content, bookType, favorite, bookLevel,score);
 				
@@ -245,7 +245,7 @@ public class PostInfoDao {
 			pstmt.setString(5, dto.getBookType());
 			pstmt.setString(6, dto.getFavorite());
 			pstmt.setString(7, dto.getBookLevel());
-			pstmt.setString(8, dto.getScore());
+			pstmt.setInt(8, dto.getScore());
 			pstmt.setInt(9, dto.getNum());
 			
 			
@@ -267,7 +267,10 @@ public class PostInfoDao {
 	} // updatePost() END
 	
 	
-	// 전체 게시글의 수를 조회
+	
+	
+	
+	// 전체 게시글의 수를 조회 (row의 총 갯수)
 	public int selectTotalCount() {
 		
 		Connection conn = null;
@@ -308,5 +311,72 @@ public class PostInfoDao {
 		return result;
 		
 	}// selectTotalCount() END
+	
+	
+	
+	
+	
+	// test
+	////// 변경예정
+	public ArrayList<PostInfoDto> selectFirstPage(int[] searchInfo) {
+		
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		PostInfoDto postInfoDto = null;
+		ArrayList<PostInfoDto> listDto = new ArrayList<PostInfoDto>();
+		
+		try {
+			
+			conn = dataSource.getConnection();
+			
+			
+			///// 변경예정
+			// searchInfo를 적용하여 pageNum에 해당하는 게시글 조회: startNum, countList 값
+			String query = "SELECT * FROM postInfo ORDER BY num DESC LIMIT 0,10";
+			pstmt = conn.prepareStatement(query);
+			
+			rs = pstmt.executeQuery();
+			
+			
+			while(rs.next()) {
+
+				int num = rs.getInt("num");
+				String bookName = rs.getString("bookName");
+				String writer = rs.getString("writer");
+				String title = rs.getString("title");
+				String content = rs.getString("content");
+				String bookType = rs.getString("bookType");
+				String favorite = rs.getString("favorite");
+				String bookLevel = rs.getString("bookLevel");
+				int score = rs.getInt("score");
+				
+				postInfoDto = new PostInfoDto(num, bookName, writer, title, content, bookType, favorite, bookLevel,score);
+				
+				listDto.add(postInfoDto);
+			}
+			
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+								
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+		return listDto;		
+		
+	}//selectFirstPage() END
 	
 } // PostInfoDao END
