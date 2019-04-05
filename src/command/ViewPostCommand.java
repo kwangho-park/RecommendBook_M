@@ -22,5 +22,4 @@ public class ViewPostCommand implements Command{
 		// request에 게시글을 정보를 저장하고있는 DTO 셋팅
 		request.setAttribute("dto", postInfoDto);
 	}
-
 }// PostViewCommand END

@@ -315,10 +315,7 @@ public class PostInfoDao {
 	
 	
 	
-	
-	// test
-	////// 변경예정
-	public ArrayList<PostInfoDto> selectFirstPage(int[] searchInfo) {
+	public ArrayList<PostInfoDto> selectPage(int[] searchInfo) {
 		
 		
 		Connection conn = null;
@@ -331,12 +328,11 @@ public class PostInfoDao {
 		try {
 			
 			conn = dataSource.getConnection();
-			
-			
-			///// 변경예정
-			// searchInfo를 적용하여 pageNum에 해당하는 게시글 조회: startNum, countList 값
-			String query = "SELECT * FROM postInfo ORDER BY num DESC LIMIT 0,10";
+						
+			String query = "SELECT * FROM postInfo ORDER BY num DESC LIMIT ?, ?";
 			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1,searchInfo[0]);
+			pstmt.setInt(2,searchInfo[1]);
 			
 			rs = pstmt.executeQuery();
 			

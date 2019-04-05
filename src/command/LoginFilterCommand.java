@@ -55,11 +55,13 @@ public class LoginFilterCommand implements Command{
 		// 로그인 flag setting //
 		// [장기적 고민] try catch를 하지않으면 response setting 시 에러발생 = 이유는???
 		strFlag = Boolean.toString(flag);
+		// 분명히 strFlag에 false값이 저장됬는데 client에 송신이후에는 false로 변경되는 미스터리....
 		
 		try {
 			loginFlag = new Cookie("loginFlag", URLEncoder.encode(strFlag,"UTF-8"));
 			response.addCookie(loginFlag);				// web browser에 전송하기위해 response 영역에 추가
 			
+
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}		

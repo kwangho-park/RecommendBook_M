@@ -94,8 +94,6 @@ public class FrontController extends HttpServlet{
 			viewPage = "/content/post/post.jsp";
 
 		// [menu] recommendBook page 요청
-			//////// 왜 여기 조건이 만족하지??
-			// 왜 저런 URI가 나왔지??
 		}else if(com.equals("/content/recommendBook/recommendBook.do")){
 			
 			// print ALL post

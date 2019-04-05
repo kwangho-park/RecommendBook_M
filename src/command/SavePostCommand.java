@@ -19,7 +19,8 @@ public class SavePostCommand implements Command{
 		String bookType = request.getParameter("bookType");
 		String favorite = request.getParameter("favorite");
 		String bookLevel = request.getParameter("bookLevel");
-		String score = request.getParameter("score");
+		int score = Integer.parseInt(request.getParameter("score"));
+		
 		
 		PostInfoDto postInfoDto = new PostInfoDto(bookName, writer, title, content, bookType, favorite, bookLevel, score);
 		PostInfoDao postInfoDao = new PostInfoDao();

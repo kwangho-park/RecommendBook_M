@@ -4,8 +4,7 @@ public class PostPaging {
 
 	public PostPaging() {}
 	
-	
-	
+
 	// web page에 출력하는 page 번호 // 
 	// One web page = Ten post
 	public int[] countPage(int totalCount) {
@@ -54,30 +53,32 @@ public class PostPaging {
 	
 	
 	
-	// test
-	////////// 검증이 필요한 로직
-	// 게시글 시작 번호(startNum)와 게시글 수(countList)를 연산
+	// 클릭한 page의 게시글을 탐색하기위한 logic // 
 	public int[] searchPost(int pageNum, int totalCount) {
 		
 		int[] searchInfo  = new int[2];
 		
-		int countList = 10;
-		int startNum = 0;
+		int countList = 10;					// 게시글 수
+		int startRowNum = 0;				// 게시글 시작 번호 (출력해야하는 게시글의 오름차순 정렬 시 가장상단의 row번호 )
 		
-		// 클릭한 page번호가 마지막 번호인 경우 countList 셋팅
-		if(totalCount%(5*(pageNum-1)) > 0) {
-			countList = totalCount % ( 5*(pageNum-1) ) ;
+		
+		if(pageNum != 1) {
+			startRowNum = (pageNum - 1) * 10;
 		}
+
 		
-		startNum = totalCount - (5 * (pageNum-1));
+		// 마지막 pageNum 일 때 츨력하는 게시글수 조정
+		if(pageNum == (totalCount / 10) + 1) {		 
+			countList = totalCount % 10;
+		}
+	
+				
 		
-		searchInfo[0] = countList;
-		searchInfo[1] = startNum;
+		searchInfo[0] = startRowNum;
+		searchInfo[1] = countList;
+
 		
 		return searchInfo;	
-		// 이 값을 가지고 DB postInfo table에 저장된 해당 page의 게시글리스트를 조회
-		
-		
 		
 	}// searchPost() END
 	
@@ -91,7 +92,7 @@ public class PostPaging {
 
 		int totalPage = 0;			// 전체 페이지 수 (=페이지 번호) 
 
-		int countList = 0; 		// 한 페이지에 출력될 게시글 수 (max 10) 
+		int countList = 0; 			// 한 페이지에 출력될 게시글 수 (max 10) 
 
 		int countPage = 0;			// 한 화면에 출력될 페이지 수 (max 10)
 
