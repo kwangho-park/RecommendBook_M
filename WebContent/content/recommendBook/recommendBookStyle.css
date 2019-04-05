@@ -2,7 +2,7 @@
 @charset "UTF-8";
 
 
-  /* tag 단위 CSS */
+/* tag 단위 CSS */
 
 
 table{ /* defult display : block */	
@@ -31,6 +31,12 @@ tbody{ /* defule display : inline */
 
   
 /* attribute 단위 CSS */
+
+.countPage{ 	
+	display : block;
+	text-align :center;
+
+}
   
   
   

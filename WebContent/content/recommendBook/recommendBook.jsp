@@ -88,34 +88,39 @@
 				<th>게시글 번호</th>
 				<th>도 서 명</th>
 				<th>작 가 명</th>
-				<th>제 목</th>
 				<th>분 류</th>
 				<th>취 향</th>
-				<th>난 이 도</th>
-				<th>추천 점수</th>
 				<th>삭 제</th>
 			</tr>
 		</thead>
 				
 		<tbody>
-			<c:forEach items="${requestScope.listDto}" var="dto">
+			<c:forEach var="dto" items="${requestScope.listDto}">
 				<tr>
 					<td>${dto.num}</td>
 					<td><a href="/RecommendBook_M/content/post/viewPost.do?num=${dto.num}">${dto.bookName}</a></td>
 					<td>${dto.writer}</td>
-					<td>${dto.title}</td>
 					<td>${dto.bookType}</td>
 					<td>${dto.favorite}</td>
-					<td>${dto.bookLevel}</td>
-					<td>${dto.score}</td>
 					<td><a href="/RecommendBook_M/content/post/deletePost.do?num=${dto.num}">삭제</a></td>
 				</tr>				
 			</c:forEach>
 		</tbody>
-		
 	</table>	
 	<br>
+
+	<!-- 페이징처리 test -->
+	<div class="countPage">
+	<c:forEach var="pageNumber" begin="${requestScope.countPage[0] }" end="${requestScope.countPage[1] }">
+	
+		<a href="/RecommendBook_M/content/recommendBook/recommendBook.do?pageNum=${pageNumber }" > [${pageNumber }] </a>
+		 
+	</c:forEach>
+	</div>
+	
 	</article>
+
+	
   </section>
   
   
