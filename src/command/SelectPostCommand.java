@@ -16,12 +16,12 @@ public class SelectPostCommand implements Command{
 		
 		PostInfoDao postInfoDao = new PostInfoDao();
 		
-		PostPaging postPaging = new PostPaging();
+		PostPaging postPaging;
 	 
-		int[] searchInfo = new int[2];	
+		int[] searchInfo = new int[6];	
 
 
-		// DB에서 post를 검색하기 위한 property//
+		// DB에서 post를 검색하기 위한 resource//
 		
 		int totalCount = 0;
 		
@@ -30,14 +30,19 @@ public class SelectPostCommand implements Command{
 		String initPageNum = "";
 		
 		
-		// DB에서 post를 검색 //
+		
+		
+		// post를 출력하기 위한 자원 얻기 //
+		// client : pagaNum, DB : totalCount
+		
+		initPageNum = request.getParameter("pageNum");
 		
 		totalCount= postInfoDao.selectTotalCount();
 		
-		initPageNum = request.getParameter("pageNum");
-
 		
-		if(initPageNum == null) {		// 초기 recommendBook page 로드 시 parameter가 없는것을 보완
+		// 초기 recommendBook page 로드 시 parameter가 없는것을 보완
+		// [장기적 고민] 코드 가독성을 위해 contoller에서 뺴야할듯...
+		if(initPageNum == null) {		
 			pageNum = 1;
 			
 		}else {
@@ -45,8 +50,14 @@ public class SelectPostCommand implements Command{
 		}
 	
 		
+		// PostPaging initialization //
+		postPaging = new PostPaging(pageNum, totalCount);
+		
+		
+		
 		// page에 출력 할 post setting // 
-		searchInfo = postPaging.searchPost(pageNum, totalCount);
+		
+		searchInfo = postPaging.searchPost();
 
 		ArrayList<PostInfoDto> listDto = postInfoDao.selectPage(searchInfo);		
 		
@@ -55,8 +66,9 @@ public class SelectPostCommand implements Command{
 		
 		
 		
-		// countPage 출력부 //
-		int[] countPage = postPaging.countPage(totalCount);
+		// countPage 연산 및 셋팅 //
+		// [추후 업데이트] array ->  hashMap 변환 (set data structure) - 이유 : index는 가독성이 매우 나쁨
+		int[] countPage = postPaging.countPage();
 		
 		request.setAttribute("countPage", countPage);
 		
