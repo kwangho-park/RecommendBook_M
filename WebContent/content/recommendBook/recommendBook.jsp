@@ -51,7 +51,7 @@
 
 
  
-<body onload="initSearchBook()">
+<body onload="initRecommendBook()">
 
   <!-- main penel -->
   <div class="mainPanel">		
@@ -109,13 +109,19 @@
 	</table>	
 	<br>
 
-	<!-- 페이징처리 test -->
+	<!-- paging -->
 	<div class="countPage">
+	<a href="/RecommendBook_M/content/recommendBook/recommendBook.do?pageNum=${requestScope.countPage[4] }" > [처음] </a>
+	<a href="/RecommendBook_M/content/recommendBook/recommendBook.do?pageNum=${requestScope.countPage[2] }" > [이전] </a>
+	
 	<c:forEach var="pageNumber" begin="${requestScope.countPage[0] }" end="${requestScope.countPage[1] }">
 	
 		<a href="/RecommendBook_M/content/recommendBook/recommendBook.do?pageNum=${pageNumber }" > [${pageNumber }] </a>
 		 
 	</c:forEach>
+	
+	<a href="/RecommendBook_M/content/recommendBook/recommendBook.do?pageNum=${requestScope.countPage[3] }" > [다음] </a>
+	<a href="/RecommendBook_M/content/recommendBook/recommendBook.do?pageNum=${requestScope.countPage[5] }" > [끝] </a>
 	</div>
 	
 	</article>
