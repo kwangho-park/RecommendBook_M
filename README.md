@@ -8,16 +8,17 @@ personal project : Recommend Book web site ( MVC sotfware design pattern -  mede
 
 2. hosting : AWS-EC2, AWS-RDS
 
+3. Framework / Library : Spring5, jQuery
 
 
-3. funtion
+4. funtion
 
-3.1 회원가입 (ID 중복조회)
+4.1 회원가입 (ID 중복조회)
 
-3.2 로그인/로그아웃
+4.2 로그인/로그아웃
 
-3.3 게시글 등록/조회/수정/삭제
+4.3 게시글 등록/조회/수정/삭제
 
-3.4 정보에 대한 validation, filtering
+4.4 정보에 대한 validation, filtering
 
-3.5 paging
+4.5 paging
