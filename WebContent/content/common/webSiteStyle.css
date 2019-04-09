@@ -70,7 +70,7 @@ nav a{
 	PowderBlue (4 단계 간격) : #b3ecff, #66d9ff, #1ac6ff, #0099cc
 */  	
   	background-image: linear-gradient(142deg, #b3ecff, #66d9ff 31%, #1ac6ff 65%, #0099cc);
-	
+
 }
 
 
@@ -105,7 +105,6 @@ nav a{
 	
 	
 	cursor:pointer;		/* cursor를 pointer (손가락)로 표출ㄴ */
-
 }
 
 

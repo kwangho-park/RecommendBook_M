@@ -71,37 +71,124 @@
 
 
   <section>
+
+  <div class="grid-container">
+   <!-- ------------------------------------------------------------------------- -->  
+  <article class="searchBlock">
+
+        <!-- 도서검색 -->
+ 		 <h2> 당신의 도서 취향은? </h2>    
+ 
+ 		<!-- 주의 : 다양한 경로에서 해당 페이지에 접근하기 때문에... 루트기준ㅢ 상대경로로 저정해야 경로가 꼬이지않음...!! -->
+ 		 <form name="searchBook" action="/RecommendBook_M/content/recommendBook/searchBook.do" method="post">
+ 
+  	     <p> 
+  		 <label> 1. 분류 : </label> 
+    		<select name = "bookType" size = "1"> 
+    			<option value = "">=====선택=====</option>
+		      	<option value = "소설"> 소설 </option>		
+		 		<option value = "에세이/시"> 에세이/시 </option>
+	    		<option value = "인문학"> 인문학 </option>
+	   	  		<option value = "경제경영"> 경제경영 </option>
+	      		<option value = "자기계발"> 자기계발 </option>
+	      		<option value = "자격증"> 자격증 </option>
+	      		<option value = "대학/전공서적"> 대학/전공서적 </option>
+	      		<option value = "취미/레저/여행/뷰티"> 취미/레저/여행/뷰티 </option>
+	      		<option value = "아동/청소년"> 아동/청소년 </option>
+	      		<option value = "만화"> 만화 </option>            
+	    		<option value = "기타"> 기타 </option>
+    		</select>
+  			</p>
   
-    <!-- 도서취향 검색 및 추천 순위표-->
-    <article>
-      <iframe src="/RecommendBook_M/content/recommendBook/searchBook/searchBook.jsp" width = "35%" height = "400px"></iframe>
-      <iframe src="/RecommendBook_M/content/recommendBook/rankingTable/rankingTable.jsp" width = "60%" height = "400px"></iframe>
-	</article>
+  			<p>  
+  			<label> 2. 취향 : </label> 
+    		<select name = "favorite" size = "1">       
+    			<option value = "">=====선택=====</option>
+      			<option value = "달달한 로맨스"> 달달한 로맨스 </option>
+	  			<option value = "유쾌한 코미디"> 유쾌한 코미디 </option>
+	  			<option value = "짜릿한 무협/액션"> 짜릿한 무협/액션 </option>
+	  			<option value = "뇌섹남의 공포/추리"> 뇌섹남의 공포/추리 </option>
+	  			<option value = "화려한 판타지/SF"> 화려한 판타지/SF </option> 
+    		</select>      
+  			</p>
+  
+  
+  			<p>
+  			<label> 3. 난이도 : </label> 
+    		<select name = "bookLevel" size = "1">
+    			<option value = "">=====선택=====</option>
+      			<option value = "상"> 상 </option> 
+      			<option value = "중"> 중 </option>
+      			<option value = "하"> 하 </option>
+    		</select>  
+    
+    		</p>
+     
+    	<input type="submit" name="searchBtn" value="도서 추천"><br>
+  
+    </form>
+ </article>
+ 
+ 
+<!-- -------------------------------------------------------------------------------------- -->
+ 
 
-	<article>
+<article class="rankingTableBlock">
+   <table>
+     <caption>추천 순위표</caption>
+     
+     <thead>
+     <tr><th>순 위</th><th>도 서 명</th> <th>작 가 명</th> <th>추천 점수(평균)</th></tr> 
+     </thead>
 
+	 <tbody>
+	 <c:if test="${requestScope.searchList != null }">
+	 	<c:forEach var="dto" items="${requestScope.searchList}"  begin="0" end="5" step="1" varStatus="status">
+	 		<tr>
+	 			<td>${status.index + 1}</td>
+	 			<td>${dto.bookName}</td>
+	 			<td>${dto.writer}</td>
+	 			<td>${dto.score }</td>		
+	 		</tr>
+	 	</c:forEach>
+	 </c:if>
+	 </tbody>	 
+   </table>
+
+</article>
+ 
+ </div>
+ 
+<!-- -------------------------------------------------------------------------------------- -->
+ 
+ 	
+	<article class="postList">
 	<br>
 	<h2>게시글 목록</h2>
-	<table>
+	<table>	
 		<thead>
 			<tr>
 				<th>게시글 번호</th>
 				<th>도 서 명</th>
 				<th>작 가 명</th>
+				<th>제 목</th>
 				<th>분 류</th>
 				<th>취 향</th>
+				<th>난이도</th>
 				<th>삭 제</th>
 			</tr>
 		</thead>
 				
 		<tbody>
-			<c:forEach var="dto" items="${requestScope.listDto}">
+			<c:forEach var="dto" items="${requestScope.postList}">
 				<tr>
 					<td>${dto.num}</td>
-					<td><a href="/RecommendBook_M/content/post/viewPost.do?num=${dto.num}">${dto.bookName}</a></td>
+					<td>${dto.bookName}</td>
 					<td>${dto.writer}</td>
+					<td><a href="/RecommendBook_M/content/post/viewPost.do?num=${dto.num}">${dto.title}</a></td>
 					<td>${dto.bookType}</td>
 					<td>${dto.favorite}</td>
+					<td>${dto.bookLevel}</td>
 					<td><a href="/RecommendBook_M/content/post/deletePost.do?num=${dto.num}">삭제</a></td>
 				</tr>				
 			</c:forEach>

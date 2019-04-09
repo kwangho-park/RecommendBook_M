@@ -90,10 +90,10 @@
 		    <select name = "favorite" size = "1"> 
 		    	<option value = "${requestScope.dto.favorite }">${requestScope.dto.favorite }</option>
 	      		<option value = "달달한 로맨스"> 달달한 로맨스 </option>
-	   	   		<option value = "재미있는 유머"> 재미있는 유머 </option>
-	      		<option value = "탄탄한 스토리"> 탄탄한 스토리 </option>
-	      		<option value = "뇌섹남의 추리"> 뇌섹남의 추리 </option>
-	      		<option value = "짜릿한 액션"> 짜릿한 액션 </option>
+	   	   		<option value = "유쾌한 코미디"> 유쾌한 코미디 </option>
+	      		<option value = "짜릿한 무협/액션"> 짜릿한 무협/액션 </option>
+	      		<option value = "뇌섹남의 공포/추리"> 뇌섹남의 공포/추리 </option>
+	      		<option value = "화려한 판타지/SF"> 화려한 판타지/SF </option>
 	    	</select>      
 		</div><br>
 	  

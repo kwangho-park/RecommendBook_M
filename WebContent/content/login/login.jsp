@@ -25,10 +25,10 @@
 
 <%-- 로그인 필터링 결과를 경고창으로 출력 --%>
 <c:choose>
-	<c:when test="${requestScope.loginFilterResult == true}">
+	<c:when test="${requestScope.loginFilterFlag == true}">
 		<script>alert("로그인 성공! nice job!")</script>
 	</c:when>
-	<c:when test="${requestScope.loginFilterResult == false}">
+	<c:when test="${requestScope.loginFilterFlag == false}">
 		<script>alert("아이디 또는 비밀번호가 일치하지 않습니다! please, one more!")</script>
 	</c:when>
 </c:choose>

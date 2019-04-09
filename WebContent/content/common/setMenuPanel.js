@@ -27,14 +27,17 @@ $(function(){
 	   
     // [debug] login.jsp 실행시 flag가 true인 이유는?
     // getCookie() 동작 방식을 분석해야함
-    if(getCookie("loginFlag")==="true"){		// 로그인
+    if(loginFlag==="true"){		// 로그인
 	    	
     	$(".menuPanel > #login").attr("href","/RecommendBook_M/content/logout/logout.do").text("로그아웃");
-	    		
-    }else if(getCookie("loginFlag")===null){	// 로그아웃
+  
+    }else if((loginFlag===null) || (loginFlag ==="false")){	// 로그아웃
 	    	
     	$(".menuPanel > #login").attr("href","/RecommendBook_M/content/login/login.do").text("로그인");
     }
+    
+    // test
+    // alert(loginFlag);
 	    
 }); // function() END
 	  
