@@ -1,0 +1,111 @@
+ @charset "UTF-8";
+ 
+/*/ web site 전체 CSS 스타일 /*/
+ 
+/*/ tag 단위 = element 단위 / */
+
+h1{
+	color :  #0033cc; 	/* blue */
+	text-align : center;
+	font-size : 3em;
+	font-family: "Lora", "LexiSaebom", "Times New Roman", serif;
+}
+
+h2{
+	text-align : center;	
+}
+    
+body {
+/*	
+	background-color : PowderBlue;
+	PowderBlue (4 단계 간격) : #d8f0f3, #9ed9e0, #64c2ce, #37a0ae
+*/  	
+  	background-image: linear-gradient(142deg, #d8f0f3, #9ed9e0 31%, #64c2ce 65%, #37a0ae);
+  	
+
+	margin-left: 50px;
+	margin-right: 50px;
+	border : 3px solid gray;
+}
+
+hr{
+  border : 3px solid gray;
+}
+
+
+nav{
+	
+	/* nav내부의 box의 배치를 위한 설정 */
+	text-align : center;	/* [중요] box안에 있는 inline box를 text 취급!! */
+}
+
+
+nav a{
+	text-decoration: none;  /* hyper text decoration 제거*/  	
+}
+
+   
+   
+   
+   
+/*/ attribute 단위 /*/
+
+.mainPanel{
+        
+	/* 유형(타입)과 위치 */
+	display : block;
+
+	margin-left: auto;
+	margin-right: auto;
+
+	box-sizing : border-box;
+	width : 100%;				
+
+
+	/* box style */
+	padding : 20px;    
+
+/*	
+	background-color : #33ccff;
+	PowderBlue (4 단계 간격) : #b3ecff, #66d9ff, #1ac6ff, #0099cc
+*/  	
+  	background-image: linear-gradient(142deg, #b3ecff, #66d9ff 31%, #1ac6ff 65%, #0099cc);
+
+}
+
+
+
+
+/* mouse over */
+/* hover의 동작원리에 대한 이해가 필요함!! */
+#mouseOver:hover{			
+
+	/*	핫핑크
+	background-color : #ff66cc;
+	PowderBlue (4 단계 간격) :  #ffccee, #ff80d5, #ff33bb, #e60099
+	*/  	
+	background-image: linear-gradient(142deg, #ffccee, #ff80d5 31%, #ff33bb 65%, #e60099);
+}
+
+
+
+.menuPanel{
+
+	/* box style */
+	padding : 5px;
+	margin : 5px;
+	
+	border : 1px solid gray;
+	
+	/*	민트색
+	background-color : #66ff99;
+	PowderBlue (4 단계 간격) : #ccffdd,  #80ffaa,  #33ff77, #00e64d
+	*/  	
+	background-image: linear-gradient(142deg, #ccffdd, #80ffaa 31%, #33ff77 65%, #00e64d);
+	
+	
+	cursor:pointer;		/* cursor를 pointer (손가락)로 표출ㄴ */
+}
+
+
+   
