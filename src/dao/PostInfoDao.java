@@ -64,6 +64,7 @@ public class PostInfoDao {
 		
 			pstmt.executeUpdate();		
 
+		
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -113,7 +114,7 @@ public class PostInfoDao {
 				
 				PostInfoDto dto = new PostInfoDto(num, bookName, writer, title, content, bookType, favorite, bookLevel, score);
 				
-				listDto.add(dto);	
+				listDto.add(dto);		
 			}
 			
 			
@@ -234,7 +235,7 @@ public class PostInfoDao {
 			conn = dataSource.getConnection();
 			
 			String query = "UPDATE postInfo SET bookName=?, writer=?, title=?, "
-					+ "content=?, bookType=?, favorite=?, bookLevel=?, score=?"
+					+ "content=?, bookType=?, favorite=?, bookLevel=?, score=? "
 					+ "WHERE num = ?";
 			
 			pstmt = conn.prepareStatement(query);

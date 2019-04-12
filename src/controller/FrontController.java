@@ -16,6 +16,7 @@ import command.DeletePostCommand;
 import command.LoginFilterCommand;
 import command.ModifyPostCommand;
 import command.SavePostCommand;
+import command.SearchBookCommand;
 import command.SelectPostCommand;
 import command.SignUpFilterCommand;
 import command.ViewPostCommand;
@@ -166,14 +167,29 @@ public class FrontController extends HttpServlet{
 			command.execute(request, response);
 	
 			viewPage = "/content/recommendBook/recommendBook.do";
-		}
+		
+				
+		// 도서 추천검색					   
+		}else if(com.equals("/content/recommendBook/searchBook.do")) {	
 			
+			
+			// search post
+			command = new SearchBookCommand();
+			command.execute(request, response);
+			
+			// print ALL post
+			command = new SelectPostCommand();
+			command.execute(request, response);
+						
+			
+			viewPage = "/content/recommendBook/recommendBook.jsp";	
+		}
 		
-		
+	
 		// forwarding // 
 		// 분배된 결과 페이지를 출력하기위한 forwarding (view 단에서 <jsp:forward /> 와 동일한 역활
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
-		dispatcher.forward(request, response);		
+		dispatcher.forward(request, response);	
 	}
 	
 

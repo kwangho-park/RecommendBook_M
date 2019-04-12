@@ -59,12 +59,10 @@ public class SelectPostCommand implements Command{
 		
 		searchInfo = postPaging.searchPost();
 
-		ArrayList<PostInfoDto> listDto = postInfoDao.selectPage(searchInfo);		
+		ArrayList<PostInfoDto> postList = postInfoDao.selectPage(searchInfo);		
 		
-		request.setAttribute("listDto", listDto);
-		
-		
-		
+		request.setAttribute("postList", postList);
+
 		
 		// countPage 연산 및 셋팅 //
 		// [추후 업데이트] array ->  hashMap 변환 (set data structure) - 이유 : index는 가독성이 매우 나쁨

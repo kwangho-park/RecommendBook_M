@@ -10,7 +10,7 @@ public class PostInfoDto {
 	private String bookType = null;
 	private String favorite = null;
 	private String bookLevel = null;
-	private String score = null;
+	private int score = 0;
 	
 	
 	
@@ -18,7 +18,7 @@ public class PostInfoDto {
 	
 	// Overroading
 	public PostInfoDto(int num, String bookName, String writer, String title, String content, String bookType,
-			String favorite, String bookLevel, String score) {
+			String favorite, String bookLevel, int score) {
 		super();
 		this.num = num;
 		this.bookName = bookName;
@@ -33,7 +33,7 @@ public class PostInfoDto {
 
 	// Overroading
 	public PostInfoDto(String bookName, String writer, String title, String content, String bookType,
-			String favorite, String bookLevel, String score) {
+			String favorite, String bookLevel, int score) {
 		super();
 		this.bookName = bookName;
 		this.writer = writer;
@@ -127,12 +127,12 @@ public class PostInfoDto {
 	}
 
 
-	public String getScore() {
+	public int getScore() {
 		return score;
 	}
 
 
-	public void setScore(String score) {
+	public void setScore(int score) {
 		this.score = score;
 	}
 

@@ -4,7 +4,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.PostInfoDao;
+import dao.RecommendInfoDao;
 import dto.PostInfoDto;
+import dto.RecommendInfoDto;
+import service.AverageScoreCal;
 
 public class SavePostCommand implements Command{
  
@@ -20,13 +23,43 @@ public class SavePostCommand implements Command{
 		String favorite = request.getParameter("favorite");
 		String bookLevel = request.getParameter("bookLevel");
 		int score = Integer.parseInt(request.getParameter("score"));
-		
-		
+	
+		// 게시글 정보 제어 //
 		PostInfoDto postInfoDto = new PostInfoDto(bookName, writer, title, content, bookType, favorite, bookLevel, score);
 		PostInfoDao postInfoDao = new PostInfoDao();
+
+		// 추천 정보 제어 //
+		RecommendInfoDao recommendInfoDao = new RecommendInfoDao();
+		RecommendInfoDto recommendInfoDto;
 		
 		
-		// 게시글 정보를 DB에 저장
+		AverageScoreCal averageScoreCal = new AverageScoreCal();
+		
+		
+		
+		// 추천 정보 조회 //
+		recommendInfoDto = recommendInfoDao.select(bookName);
+		
+		
+		// 추천정보 업데이트 or 삽입
+		if(recommendInfoDto != null) {			
+			
+			
+			// [service]
+			averageScoreCal.addition(score, recommendInfoDto);
+			
+			// [DAO]
+			recommendInfoDao.update(recommendInfoDto);
+			
+		}else { 
+
+			recommendInfoDao.insert(postInfoDto);
+		}
+		
+		
+		
+
+		// 게시글 정보를 저장 // 
 		postInfoDao.insertPost(postInfoDto);
 		
 		// browser 경고창 출력을 위한 setting
