@@ -28,17 +28,24 @@ public class AverageScoreCal {
 	
 	
 	// 평균 추천점수를 연산 (뺴기) //
-	public void subtraction(int beforeScore, RecommendInfoDto recommendInfoDto2) {
+	// 동작 조건 : 게시글 수정 시 도서명 변경, 게시글 삭제
+	public void subtraction(int beforeScore, RecommendInfoDto recommendInfoDto) {
 		 
-		int averageScore = recommendInfoDto2.getAverageScore();
-		int counter = recommendInfoDto2.getCounter();
+		int averageScore = recommendInfoDto.getAverageScore();
+		int counter = recommendInfoDto.getCounter();
 		
 		int result = 0;
 		
-		result = ((averageScore * counter) - beforeScore) / (counter-1);
-		
-		recommendInfoDto2.setAverageScore(result);
-		recommendInfoDto2.setCounter(counter-1);
+		if(counter != 1) {
+			result = ((averageScore * counter) - beforeScore) / (counter-1);
+			
+			recommendInfoDto.setAverageScore(result);
+			recommendInfoDto.setCounter(counter-1);
+			
+		}else {
+			recommendInfoDto.setAverageScore(result);
+			recommendInfoDto.setCounter(counter-1);
+		}
 		
 	}// subtraction() END
 	

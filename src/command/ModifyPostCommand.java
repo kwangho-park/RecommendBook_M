@@ -30,6 +30,7 @@ public class ModifyPostCommand implements Command {
 		PostInfoDto postInfoDto = new PostInfoDto(num, bookName, writer, title, content, bookType, favorite, bookLevel, score);
 		PostInfoDao postInfoDao = new PostInfoDao();
 		
+		
 		// 추천 정보 제어//
 		RecommendInfoDao recommendInfoDao = new RecommendInfoDao();
 		RecommendInfoDto recommendInfoDto;
@@ -93,6 +94,7 @@ public class ModifyPostCommand implements Command {
 		
 		
 
+		///////// 게시글 수정 부 /////////
 		
 		// 게시글 수정 DAO
 		postInfoDao.updatePost(postInfoDto);

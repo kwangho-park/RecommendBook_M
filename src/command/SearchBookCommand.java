@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.SearchPostInfoDao;
-import dto.PostInfoDto;
+import dto.SearchPostInfoDto;
 
 public class SearchBookCommand implements Command{
 
@@ -19,7 +19,7 @@ public class SearchBookCommand implements Command{
 		
 		SearchPostInfoDao postInfoSearchDao = new SearchPostInfoDao();
 		
-		ArrayList<PostInfoDto> searchList = new ArrayList<PostInfoDto>();
+		ArrayList<SearchPostInfoDto> searchList = new ArrayList<SearchPostInfoDto>();
 		
 		
 		
