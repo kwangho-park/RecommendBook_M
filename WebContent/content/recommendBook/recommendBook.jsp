@@ -74,7 +74,7 @@
 
   <div class="grid-container">
    <!-- ------------------------------------------------------------------------- -->  
-  <article class="searchBlock">
+  <article class="searchItem">
 
         <!-- 도서검색 -->
  		 <h2> 당신의 도서 취향은? </h2>    
@@ -87,6 +87,7 @@
     		<select name = "bookType" size = "1"> 
     			<option value = "">=====선택=====</option>
 		      	<option value = "소설"> 소설 </option>		
+		      	<!-- 
 		 		<option value = "에세이/시"> 에세이/시 </option>
 	    		<option value = "인문학"> 인문학 </option>
 	   	  		<option value = "경제경영"> 경제경영 </option>
@@ -97,9 +98,10 @@
 	      		<option value = "아동/청소년"> 아동/청소년 </option>
 	      		<option value = "만화"> 만화 </option>            
 	    		<option value = "기타"> 기타 </option>
+	    		 -->
     		</select>
   			</p>
-  
+
   			<p>  
   			<label> 2. 취향 : </label> 
     		<select name = "favorite" size = "1">       
@@ -125,7 +127,7 @@
     		</p>
      
     	<input type="submit" name="searchBtn" value="도서 추천"><br>
-  
+
     </form>
  </article>
  
@@ -133,12 +135,12 @@
 <!-- -------------------------------------------------------------------------------------- -->
  
 
-<article class="rankingTableBlock">
+<article class="rankingTableItem">
    <table>
-     <caption>추천 순위표</caption>
+     <caption>추천 순위표 (Max 5)</caption>
      
      <thead>
-     <tr><th>순 위</th><th>도 서 명</th> <th>작 가 명</th> <th>추천 점수(평균)</th></tr> 
+     <tr><th>순 위</th><th>도 서 명</th> <th>작 가 명</th> <th>추천 점수 (평균)</th></tr> 
      </thead>
 
 	 <tbody>
@@ -148,7 +150,7 @@
 	 			<td>${status.index + 1}</td>
 	 			<td>${dto.bookName}</td>
 	 			<td>${dto.writer}</td>
-	 			<td>${dto.score }</td>		
+	 			<td>${dto.averageScore }</td>		
 	 		</tr>
 	 	</c:forEach>
 	 </c:if>
@@ -157,7 +159,7 @@
 
 </article>
  
- </div>
+</div>
  
 <!-- -------------------------------------------------------------------------------------- -->
  
