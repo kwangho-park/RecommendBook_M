@@ -59,50 +59,58 @@
 
   <section>
   
-    <h2> 회원가입 </h2>
+    <h2> 회 원 가 입 </h2>
 
     <!-- 회원가입 양식 -->
     <article>
 			<form name="signUpClient" method="post" action="signUpFilter.do" onsubmit="return signUpValidation()">
 
-				<label class="signUpInfo"> 아 이 디&nbsp; : &nbsp;</label> <input type="text" name="signUpId" id="id" placeholder="문자로 입력해주세요">
+				<!-- 추후 영문입력으로 변경 -->
+				<label class="signUpInfo"> 아 이 디&nbsp; : &nbsp;</label><input type="text" name="signUpId" id="id" placeholder="문자">
 					
 				<%--[장기적 고민]
         		<input type="button" id="idCheckBtn" value="중복확인">  
         		--%>
 
-				<label class="signUpInfo"> 비밀번호 : &nbsp;</label> <input type="password" name="signUpPw" id="pw" placeholder="숫자로 입력해주세요">
-				<label class="signUpInfo"> 이&nbsp; &nbsp; 름&nbsp; : &nbsp;</label> <input type="text" name="signUpName" id="name" placeholder="당신의 이름은 무엇인가요?"> 
-				<label class="signUpInfo">생년월일 : &nbsp;</label> <input type="date" name="signUpBrathday"id="brathday"> 
-				<label class="signUpInfo"> 이 메 일&nbsp; : &nbsp;</label> <input type="email" name="signUpEmail" id="email"placeholder="이메일 형식에 맞춰주세요"> 
-				<label class="signUpInfo">주&nbsp; &nbsp; &nbsp;소&nbsp; : &nbsp;</label> <input type="text"name="signUpAddress" id="address" placeholder="거주지가 어디신가요?">
+				<label class="signUpInfo"> 비밀번호 : &nbsp;</label><input type="password" name="signUpPw" id="pw" placeholder="숫자">
+				<label class="signUpInfo"> 이&nbsp; &nbsp; 름&nbsp; : &nbsp;</label><input type="text" name="signUpName" id="name" placeholder="문자"> 
+				<label class="signUpInfo"> 생년월일 : &nbsp;</label><input type="date" name="signUpBrathday"id="brathday"><br>
+				
+				<label class="signUpInfo"> 이 메 일 : &nbsp;</label><input type="text" name="email01" id="email01" style="width:100px"> @ 
+						<input type="text" name="email02" id="email02" style="width:100px;" disabled value="naver.com"> 
 
-				<label class="signUpInfo"> 가입경로&nbsp; : &nbsp;</label> <select
-					name="signUpProcess" size="1">
-					<option value="">=====선택=====</option>
-					<option value="인터넷 검색">인터넷 검색</option>
-					<option value="지인추천">지인추천</option>
-					<option value="광고">광고</option>
-					<option value="기타">기타</option>
-				</select>
+						<select name="selectEmail" id="selectEmail">
+							<option value="1">직접입력</option> <option value="naver.com" selected>naver.com</option> 
+							<option value="hanmail.net">hanmail.net</option> <option value="hotmail.com">hotmail.com</option> 
+							<option value="nate.com">nate.com</option> <option value="yahoo.co.kr">yahoo.co.kr</option> 
+							<option value="empas.com">empas.com</option> <option value="dreamwiz.com">dreamwiz.com</option> 
+							<option value="freechal.com">freechal.com</option> <option value="lycos.co.kr">lycos.co.kr</option> 
+							<option value="korea.com">korea.com</option> <option value="gmail.com">gmail.com</option> 
+							<option value="hanmir.com">hanmir.com</option> <option value="paran.com">paran.com</option> 
+						</select>
 
+				<br><br>
+				<div style="text-align:center">- 주   소 -</div>
+				<div class="addressLine">
+				<span class="addressInfo"><input type="text" id="postcode" placeholder="우편번호"></span>
+				<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
+	
+				<span class="addressInfo"><input type="text" id="roadAddress" placeholder="도로명주소"></span>
+				<input type="text" id="jibunAddress" placeholder="지번주소"><br>
 
-				<div class="mail">
-
-					<fieldset>
-						<legend> 광고성 메일 수신여부 </legend>
-						<label> 수신 : </label> <input type="radio" name="signUpAdvertising"
-							value="수신" checked> <label> 미수신 : </label> <input
-							type="radio" name="signUpAdvertising" value="미수신">
-					</fieldset>
-
-					<br> <input type="submit" value="회원가입신청"> <br>
-
+				<span class="addressInfo"><input type="text" id="detailAddress" placeholder="상세주소"></span>
+				<input type="text" id="extraAddress" placeholder="참고항목">
+				
 				</div>
-
-
+				
+				
+				<br>
+				<div style="text-align:center"><input type="submit" value="회원가입신청"> <br></div>
+				<br>
 			</form>
 		</article>
+		
+	
   </section>
 
   <hr>
@@ -132,6 +140,20 @@
   <script src="signUpValidation.js"></script>
   
   <script src="/RecommendBook_M/content/common/setMenuPanel.js" ></script>
+  
+  <!-- daum post service (open API)-->
+  <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+
+  <!--  daum API -->
+  <script src="postCode.js"></script>
+  
+  <!-- email -->
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+  <script src="email.js"></script>
+  
+  
+  
   
 <%--
   <!-- id 중복여부를 확인하는 로직 -->

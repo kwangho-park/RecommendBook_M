@@ -28,8 +28,20 @@ ol{
 	width : 45%;
     text-align: right;
 }
+
 	
-.mail{
-	text-align : center;
-}  
-	
+.addressInfo{
+    display : inline-block;
+    
+    margin : 5px;
+    
+    /* web form의 중앙정렬를 맞추기 위한 설정*/
+	width : 50%;
+    text-align: right;
+}
+
+
+.addressLine{
+	display : block;
+	border : 3px solid gray;
+}

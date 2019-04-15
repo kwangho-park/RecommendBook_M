@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-<jsp:useBean id="cal" class="old.etc.IndexCalendar" scope="page"/>
 
 <!DOCTYPE html>
 
@@ -45,14 +44,6 @@
   <section>
     
     <article>
-	<span>  
-		접속 일자는
-		${cal.year}년 ${cal.month}월 ${cal.date}일
-		${cal.hour}시 ${cal.minute }분
-		입니다.
-		
-
-	</span>
 
     <!-- 인사말 및 회원가입 link -->
     <p>안녕하세요. <strong>도서 추천 웹 사이트에 오신것을 환영합니다 ^-^</strong><br>
