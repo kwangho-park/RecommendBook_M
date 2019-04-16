@@ -12,6 +12,7 @@ personal project : Recommend Book web site ( MVC sotfware design pattern -  mede
 4. function(기능)
 
 4.1 signUp (ID 중복조회)
+  - 우편/주소 검색 open API
 
 4.2 login/logout
 
@@ -24,3 +25,5 @@ personal project : Recommend Book web site ( MVC sotfware design pattern -  mede
 4.6 추천 도서 검색
   - 검색기준 : 분류,취향,난이도
   - 정렬기준 : 평균 추천점수
+  
+  
