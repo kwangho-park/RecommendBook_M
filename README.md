@@ -25,5 +25,3 @@ personal project : Recommend Book web site ( MVC sotfware design pattern -  mede
 4.6 추천 도서 검색
   - 검색기준 : 분류,취향,난이도
   - 정렬기준 : 평균 추천점수
-  
-  
