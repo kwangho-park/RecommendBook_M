@@ -9,14 +9,14 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import dto.UserInfoDto;
+import dto.UserInfoDto_old;
 
-public class UserInfoDao {
+public class UserInfoDao_old {
 	
 	private DataSource dataSource;
 	
 	// server directory context.xml의 설정된 connection pool 생성
-	public UserInfoDao() {
+	public UserInfoDao_old() {
 		try {
 
 			// ?? //
@@ -35,9 +35,9 @@ public class UserInfoDao {
 	
 	
 	// login 시 ID, PW를 조회 // 
-	public ArrayList<UserInfoDto> select() {
+	public ArrayList<UserInfoDto_old> select() {
 		
-		ArrayList<UserInfoDto> dtoList = new ArrayList<UserInfoDto>();		
+		ArrayList<UserInfoDto_old> dtoList = new ArrayList<UserInfoDto_old>();		
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -55,9 +55,9 @@ public class UserInfoDao {
 			
 			while(rs.next()){
 				String id = rs.getString("id");
-				String pw = rs.getString("pw");
+				int pw = rs.getInt("pw");
 				
-				UserInfoDto dto = new UserInfoDto();
+				UserInfoDto_old dto = new UserInfoDto_old();
 				dto.setId(id);
 				dto.setPw(pw);
 				
@@ -134,8 +134,8 @@ public class UserInfoDao {
 	} // filter() END
 	
 	
-	// 회원가입 시 데이터 삽입 // 
-	public void insert(UserInfoDto userInfoDto) {
+	
+	public void insert(UserInfoDto_old userInfoDto) {
 		
 
 		Connection conn = null;
@@ -145,20 +145,16 @@ public class UserInfoDao {
 		try {
 			conn = dataSource.getConnection();
 			
-			String query = "INSERT INTO userInfo VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+			String query = "INSERT INTO userInfo VALUES(?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, userInfoDto.getId());
-			pstmt.setString(2, userInfoDto.getPw());
+			pstmt.setInt(2, userInfoDto.getPw());
 			pstmt.setString(3, userInfoDto.getUserName());
 			pstmt.setString(4, userInfoDto.getBirthday());
-			pstmt.setString(5, userInfoDto.getEmail01());
-			
-			pstmt.setString(6, userInfoDto.getEmail02());
-			pstmt.setInt(7, userInfoDto.getPostCode());
-			pstmt.setString(8, userInfoDto.getRoadAddress());
-			pstmt.setString(9, userInfoDto.getJibunAddress());
-			pstmt.setString(10, userInfoDto.getDetailAddress());
-			pstmt.setString(11, userInfoDto.getExtraAddress());
+			pstmt.setString(5, userInfoDto.getEmail());
+			pstmt.setString(6, userInfoDto.getAddress());
+			pstmt.setString(7, userInfoDto.getSignUpProcess());
+			pstmt.setString(8, userInfoDto.getAdvertising());
 			
 			pstmt.executeUpdate();
 			
@@ -182,4 +178,4 @@ public class UserInfoDao {
 	
 
 	
-} // UserInfoDao END
+} // Dao END

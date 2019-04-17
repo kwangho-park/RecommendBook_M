@@ -281,7 +281,7 @@ public class PostInfoDao {
 		int result = 0;
 		
 		try {
-			conn = dataSource.getConnection();
+			conn = dataSource.getConnection();		
 
 			String query ="SELECT count(*) as totalCount FROM postInfo";
 			
