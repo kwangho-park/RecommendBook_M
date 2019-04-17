@@ -4,8 +4,9 @@
  */
 
 
-// 동작 흐름에 대한 공부가 조금 필요함 
-// 조금 응용해볼것 (javascript 에 대한 복습 : 콜백함수 등 )
+ 
+
+
 function execDaumPostcode() {
 	
 
@@ -13,13 +14,13 @@ function execDaumPostcode() {
 	
 	new daum.Postcode({
 		
-		// 팝업창에서 특정항목 클릭 시 동작
+		// 팝업창에서 특정항목 클릭 시 동작 //
 		oncomplete: function(data) { 		// data = 사용자가 선택한 주소를 저장한 객체(=참조변수)
 			
-
-            document.getElementById('postcode').value = data.zonecode;			// 우편번호 data
-            document.getElementById("roadAddress").value = data.roadAddress;	// 도로명주소 data
-            document.getElementById("jibunAddress").value = data.jibunAddress;	// 지번주소 data
+			// 우편번호, 도로명주소, 지번주소 setting  //
+            document.getElementById('postCode').value = data.zonecode;		
+            document.getElementById("roadAddress").value = data.roadAddress;	
+            document.getElementById("jibunAddress").value = data.jibunAddress;	
             
             
             var roadAddr = data.roadAddress; // 도로명 주소 data

@@ -55,15 +55,15 @@
   <section>
     
     <article>
-    <h2>로그인 페이지에 오신것을 환영합니다 </h2>
+    <h2>로 그 인</h2>
     </article>
 
 
 	<article>
    		<form name = "loginClient" method = "post" action="loginFilter.do" onsubmit= "return login()">
    		
-    	<label class="loginInfo"> ID </label><input type = "text" 		name="loginId" id = "id" placeholder="문자입력">
-    	<label class="loginInfo"> PW </label><input type = "password"	name="loginPw" id = "pw" placeholder="숫자입력">
+    	<label class="loginInfo"> ID </label><input type = "text" 		name="loginId" id = "id" placeholder="문자">
+    	<label class="loginInfo"> PW </label><input type = "password"	name="loginPw" id = "pw" placeholder="문자 또는 숫자">
     	
 	   	<div align="center"><input type="submit" value="로그인"></div>
     

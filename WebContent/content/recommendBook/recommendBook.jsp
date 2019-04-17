@@ -126,7 +126,7 @@
     
     		</p>
      
-    	<input type="submit" name="searchBtn" value="도서 추천"><br>
+    	<input type="submit" name="searchBtn" value="추천도서 검색"><br>
 
     </form>
  </article>

@@ -64,23 +64,25 @@
     <!-- 회원가입 양식 -->
     <article>
 			<form name="signUpClient" method="post" action="signUpFilter.do" onsubmit="return signUpValidation()">
-
+			
 				<!-- 추후 영문입력으로 변경 -->
-				<label class="signUpInfo"> 아 이 디&nbsp; : &nbsp;</label><input type="text" name="signUpId" id="id" placeholder="문자">
+				<label class="signUpInfo"> 아 이 디&nbsp; : &nbsp;</label><input type="text" name="id" id="id" placeholder="문자">
 					
 				<%--[장기적 고민]
         		<input type="button" id="idCheckBtn" value="중복확인">  
         		--%>
 
-				<label class="signUpInfo"> 비밀번호 : &nbsp;</label><input type="password" name="signUpPw" id="pw" placeholder="숫자">
-				<label class="signUpInfo"> 이&nbsp; &nbsp; 름&nbsp; : &nbsp;</label><input type="text" name="signUpName" id="name" placeholder="문자"> 
-				<label class="signUpInfo"> 생년월일 : &nbsp;</label><input type="date" name="signUpBrathday"id="brathday"><br>
+				<label class="signUpInfo"> 비밀번호 : &nbsp;</label><input type="password" name="pw" id="pw" placeholder="문자 또는 숫자">
+				<label class="signUpInfo"> 이&nbsp; &nbsp; 름&nbsp; : &nbsp;</label><input type="text" name="name" id="name" placeholder="문자"> 
+				<label class="signUpInfo"> 생년월일 : &nbsp;</label><input type="date" name="birthday"id="birthday"><br>
 				
 				<label class="signUpInfo"> 이 메 일 : &nbsp;</label><input type="text" name="email01" id="email01" style="width:100px"> @ 
-						<input type="text" name="email02" id="email02" style="width:100px;" disabled value="naver.com"> 
-
+ 
+ 						<input type="text" name="email02" id="email02">
+ 						
+ 						
 						<select name="selectEmail" id="selectEmail">
-							<option value="1">직접입력</option> <option value="naver.com" selected>naver.com</option> 
+							<option value="1" selected>직접입력</option> <option value="naver.com">naver.com</option> 
 							<option value="hanmail.net">hanmail.net</option> <option value="hotmail.com">hotmail.com</option> 
 							<option value="nate.com">nate.com</option> <option value="yahoo.co.kr">yahoo.co.kr</option> 
 							<option value="empas.com">empas.com</option> <option value="dreamwiz.com">dreamwiz.com</option> 
@@ -92,17 +94,17 @@
 				<br><br>
 				<div style="text-align:center">- 주   소 -</div>
 				<div class="addressLine">
-				<span class="addressInfo"><input type="text" id="postcode" placeholder="우편번호"></span>
+				<span class="addressInfo"><input type="text" name="postCode" id="postCode" placeholder="우편번호"></span>
 				<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
 	
-				<span class="addressInfo"><input type="text" id="roadAddress" placeholder="도로명주소"></span>
-				<input type="text" id="jibunAddress" placeholder="지번주소"><br>
-
-				<span class="addressInfo"><input type="text" id="detailAddress" placeholder="상세주소"></span>
-				<input type="text" id="extraAddress" placeholder="참고항목">
+				<span class="addressInfo"><input type="text" name="roadAddress" id="roadAddress" placeholder="도로명주소"></span>
+				<input type="text" name="jibunAddress" id="jibunAddress" placeholder="지번주소"><br>
+									  
+				<span class="addressInfo"><input type="text" name="detailAddress" id="detailAddress" placeholder="상세주소"></span>
+				<input type="text" name="extraAddress" id="extraAddress" placeholder="참고항목">
 				
 				</div>
-				
+					
 				
 				<br>
 				<div style="text-align:center"><input type="submit" value="회원가입신청"> <br></div>
@@ -138,7 +140,8 @@
 
   <!-- 입력한 회원가입 정보의 유효성 검사 -->
   <script src="signUpValidation.js"></script>
-  
+   
+   
   <script src="/RecommendBook_M/content/common/setMenuPanel.js" ></script>
   
   <!-- daum post service (open API)-->
@@ -147,9 +150,11 @@
   <!--  daum API -->
   <script src="postCode.js"></script>
   
-  <!-- email -->
-  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
+  <!-- event email -->
   <script src="email.js"></script>
   
   

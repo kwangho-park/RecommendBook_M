@@ -1,6 +1,7 @@
 
 /* 회원가입 정보의 유효성(JS) 및 중복검사(JSP)  로직 */
 
+
 /* 유효성 검사 정의(임시) */
 /*
 id = 문자열
@@ -12,32 +13,34 @@ address = 문자열
 
 
 /* '회원가입신청' submit click 시 실행되는 함수 */
-// 회원가입 양식의 유효성 검사
+// jQuery로 업데이트 예정
 function signUpValidation() {
-	
+
 	/* <input> 의 dom객체의 참조값을 반환 */
 	var idDom = document.getElementById("id");
 	var pwDom = document.getElementById("pw");
 	var nameDom = document.getElementById("name");
-	var brathdayDom = document.getElementById("brathday"); // 사용자 입력 시 <input>
-															// attribute(date)에서
-															// 필터링
+	var brathdayDom = document.getElementById("brathday"); 
 	
-	var emailDom = document.getElementById("email"); // 필터링 적용 필요
-	var addressDom = document.getElementById("address");
+	var email01Dom = document.getElementById("email01");
+	var email02Dom = document.getElementById("email02");
+	
+	var postCodeDom = document.getElementById("postCode");
+	var roadAddressDom = document.getElementById("roadAddress");
+	var jibunAddressDom = document.getElementById("jibunAddress");
+	
 
-	/* [??] 이메일의 유효성을 검사하는 정규식 */
-	// 정규식에 대해 공부한 이후 진행
-	// var resultEmail = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-	// var resultEmail =
-	// /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-
+	
 
 	/* 객체 생성 및 참조값 할당 */
 	// 사용자에게 입력받은 data를 filter method에게 전달 (은닉된 creaeFilter 변수를 setting)
-	var login = createValidation(idDom.value, pwDom.value, nameDom.value, brathdayDom.value);
-	/////// debug
+	///////// 에러발생
+	var login = createValidation(idDom.value, pwDom.value, nameDom.value, brathdayDom.value, 
+			
+			email01Dom.value, email02Dom.value, postCodeDom.value, roadAddressDom.value, jibunAddressDom.value);
 
+	
+	
 	/* 회원가입정보의 유효성을 검사하는 함수 호출(=즉, 실행) */ 
 	return login.validation();
 	
@@ -50,32 +53,29 @@ function signUpValidation() {
 
 // 유효성 검사 : Validation Check
 /* 회원가입 정보의 유효성검사 function */
-// id, pw, name, brathday
-function createValidation(id, pw, name, brathday) {
+function createValidation(id, pw, name, brathday, email01, email02, postCode, roadAddress, jibunAddress) {
 
 	return {
-		validation : function() { // filter property의 closure method???
+		validation : function() {
 
 			var result = false;
 			
-			// 회원정보 filtering 알고리즘
+			// 회원정보 filtering // 
 			// isNaN 라이브러리 메소드 : not a number : 숫자가 아닐경우 true반환
-			if ((id != "") && (isNaN(id))) {		 	// id : 공백과 숫자일경우 실행x
-
-				if ((pw != "") && (!isNaN(pw))) { 		// pw : 공백과 문자일경우 실행x
-					if ((name != "") && (isNaN(name))) {// name : 공백과 숫자일경우
-														// 실행x
-						if (brathday != "") { 			// brathday : 공백일경우 실행x
-							
-
-							result = true;
-							alert("유효성검사 통과")
-							
-							
-						} else {alert("생년월일을 입력해주실래요??^^");}
-					} else {alert("이름을 문자로 입력해주실래요??^^");}
-				} else {alert("pw을 숫자로 입력해주실래요??^^");}
-			} else {alert("id를 문자로 입력해주실래요?^^");}
+			if ((id != "") && (isNaN(id))) {
+				if (pw != "") { 		
+					if ((name != "") && (isNaN(name))) {
+						if (brathday != "") { 			
+							if((email01 !="") && (email02 !="") &&(isNaN(email01)) &&(isNaN(email02))){
+								if((postCode !="") && (roadAddress !="") && (jibunAddress !="") ){
+									result = true;
+									alert("유효성검사 통과")
+								}else {alert("주소를 입력해주세요");}		
+							}else{alert("이메일을 입력해주세요");}
+						} else {alert("생년월일을 입력해주세요");}
+					} else {alert("이름을 문자로 입력해주세요");}
+				} else {alert("pw을 입력해주세요");}
+			} else {alert("id를 문자로 입력해주세요");}
 			
 			return result;
 			
