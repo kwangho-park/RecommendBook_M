@@ -2,11 +2,11 @@ package service;
 
 import java.util.ArrayList;
 
-import dto.UserInfoDto;
+import dto.UserInfoDto_old;
 
 public class LoginFilter {
 
-	ArrayList<UserInfoDto> dto = null;
+	ArrayList<UserInfoDto_old> dto = null;
 	
 	// 사용자 입력 정보 //
 	String loginId = null;
@@ -27,7 +27,7 @@ public class LoginFilter {
 
 		
 		// forEach 문으로 list의 모든 element를 호출
-		for(UserInfoDto userInfoDto:dto) {
+		for(UserInfoDto_old userInfoDto:dto) {
 			
 			dbId = userInfoDto.getId();
 			dbPw = userInfoDto.getPw();
@@ -50,12 +50,12 @@ public class LoginFilter {
 	
 	// getter, setter //
 
-	public ArrayList<UserInfoDto> getDto() {
+	public ArrayList<UserInfoDto_old> getDto() {
 		return dto;
 	}
 
 
-	public void setDto(ArrayList<UserInfoDto> dto) {
+	public void setDto(ArrayList<UserInfoDto_old> dto) {
 		this.dto = dto;
 	}
 
