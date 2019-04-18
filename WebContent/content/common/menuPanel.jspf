@@ -9,12 +9,6 @@
 <span class="menuPanel" id="mouseOver"><a href="/RecommendBook_M/content/post/post.do" 						id="post" 			target="_self">	게시글 작성</a></span>
  
  
-<!-- login flag를 검사하는 JS로직 -->
-
+<!-- login flag를 검사 시 필요한 jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
  
-<script>
-
-
-
-</script>

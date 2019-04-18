@@ -1,7 +1,10 @@
 
 
+	
+	
 function initLogin(){
 //  menuInit();
 //  loginEventListener();
-  
+
+   
 }

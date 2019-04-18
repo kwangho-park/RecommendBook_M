@@ -70,7 +70,8 @@
 		 	<label> 1. 분류 : </label> 
 		    <select name = "bookType" id="bookType" size = "1" > 
 		        <option value = "${requestScope.dto.bookType}">${requestScope.dto.bookType}</option>
-		      	<option value = "소설"> 소설 </option>		
+		      	<option value = "소설"> 소설 </option>
+		      	<!-- 		
 		 		<option value = "에세이/시"> 에세이/시 </option>
 	    		<option value = "인문학"> 인문학 </option>
 	   	  		<option value = "경제경영"> 경제경영 </option>
@@ -81,6 +82,7 @@
 	      		<option value = "아동/청소년"> 아동/청소년 </option>
 	      		<option value = "만화"> 만화 </option>            
 	    		<option value = "기타"> 기타 </option>
+	    		 -->
 	    	</select>
 		</div><br>
 	  
@@ -106,12 +108,17 @@
 	      		<option value = "하"> 하 </option>
 	    	</select>  
 	    
+	    <p>* 도서별로 지정된 분류/취향/난이도에 따라 선택해주세요</p>
+	    
 		</div>
 		<hr>
 	
 		<h3>추천 점수를 입력해주세요^-^</h3>
 	
-		<div class="postInfo"><input type="number" name="score" id="score" min="1" max="10" value="${requestScope.dto.score }"></div><br>
+		<div class="postInfo">
+			<input type="number" name="score" id="score" min="1" max="10" value="${requestScope.dto.score }">
+			<p>[비추천] 1  <------> 10 [추천]</p>
+		</div><br>
 		
 		<div align="center"><input type="submit" name="postBtn" value="게시글 수정"></div><br>
 	

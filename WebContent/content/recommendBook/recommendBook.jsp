@@ -27,26 +27,26 @@
 <%-- 로그인 필터링 결과를 경고창으로 출력 --%>
 <c:choose>
 	<c:when test="${requestScope.loginFilterFlag == true}">
-		<script>alert("로그인 성공! nice job!")</script>
+		<script>alert("로그인 성공! (success login)")</script>
 	</c:when>
 	<c:when test="${requestScope.loginFilterFlag == false}">
-		<script>alert("아이디 또는 비밀번호가 일치하지 않습니다! please, one more!")</script>
+		<script>alert("아이디 또는 비밀번호가 일치하지 않습니다! (fail login))")</script>
 	</c:when>
 </c:choose>
 
 <%-- 특정 게시글의 저장 결과를 출력 --%>
 <c:if test="${requestScope.saveSuccess == true }">
-	<script>alert("게시글이 등록되었습니다! have nice day!!")</script>
+	<script>alert("게시글이 등록되었습니다! (register post)")</script>
 </c:if>
 
 <%-- 특정 게시글의 삭제 결과를 출력--%>
 <c:if test="${requestScope.deleteSuccess == true }">
-	<script>alert("게시글이 삭제되었습니다! have nice day!!")</script>
+	<script>alert("게시글이 삭제되었습니다! (delete post)")</script>
 </c:if>
 
 <%-- 특정 게시글의 수정 결과를 출력--%>
 <c:if test="${requestScope.modifySuccess == true }">
-	<script>alert("게시글이 수정되었습니다! have nice day!!")</script>
+	<script>alert("게시글이 수정되었습니다! (update post)")</script>
 </c:if>
 
 

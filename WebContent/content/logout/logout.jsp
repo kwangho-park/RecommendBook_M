@@ -47,7 +47,7 @@
   <section>
     
     <article>
-    <h2>로그아웃 페이지입니다 </h2>
+    <h2>로 그 아 웃</h2>
     </article>
 
 

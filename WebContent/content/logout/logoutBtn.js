@@ -1,20 +1,16 @@
 
-/* logout 버튼 클릭시 동작하는 logic*/
 
-var deleteCookie = function(name) {
-      var date = new Date();
-      document.cookie = name + "= " + "; expires=" + date.toUTCString() + "; path=/";
-}
-
-   
+/* logout 버튼 클릭시 동작하는 logic*/   
 function logoutBtn(){
 	 
  
   var input = confirm("로그아웃 하시겠습니까?");
                 
   if(input){
-	  
-	deleteCookie("loginFlag");
+	 
+	// delete loginFlag //
+	sessionStorage.removeItem("loginFlag");
+	
   	location.href = "/RecommendBook_M/content/login/login.do";
     
   	alert("로그아웃 되었습니다")

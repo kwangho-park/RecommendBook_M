@@ -22,14 +22,13 @@
 
 </head>
 
-
 <%-- 로그인 필터링 결과를 경고창으로 출력 --%>
 <c:choose>
 	<c:when test="${requestScope.loginFilterFlag == true}">
-		<script>alert("로그인 성공! nice job!")</script>
+		<script>alert("로그인 성공! (success login)")</script>
 	</c:when>
 	<c:when test="${requestScope.loginFilterFlag == false}">
-		<script>alert("아이디 또는 비밀번호가 일치하지 않습니다! please, one more!")</script>
+		<script>alert("아이디 또는 비밀번호가 일치하지 않습니다! (fail login))")</script>
 	</c:when>
 </c:choose>
 
@@ -92,15 +91,16 @@
 
   <!-- web page loading 시 초기화 로직 -->
   <script src="initLogin.js"></script>
-  
+
   <!-- 로그인 유효성 검사 로직  --> 
   <script src="loginValidation.js"></script>
   
   <!-- login flag setting -->
   <script src="setLoginFlag.js"></script>
-  
-  <!-- setMenuPanel 미적용(임시) -->
-  <!-- [장기적 고민] 해당페이지(로그인)에서 cookie 의 값을 읽을경우 true가 반환됨 -->
+
+ 
+  <script src="/RecommendBook_M/content/common/setMenuPanel.js" ></script>
+
 
 </body>
 
